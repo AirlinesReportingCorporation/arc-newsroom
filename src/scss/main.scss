@@ -1,5 +1,8 @@
 @use "~arccorp-vars/src/scss/main";
 
+@import "./partials/newsroom-jumbo";
+@import "./partials/newsroom-card";
+
 #app {
   justify-content: center;
   width: 100%;
@@ -16,15 +19,15 @@
 
 .newsroom-container {
   max-width: 1200px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding:40px 15px;
   margin: auto;
 }
 
-.active-filter {
-  color: main.$arc-teal;
-  border: 2px solid main.$arc-teal !important;
-  padding: 0 5px;
-  border-radius: 10px;
-  font-family: main.$arc-font-bold;
+.newsroom-header {
+  font-family: main.$arc-font-regular;
+  margin-bottom: 15px;
+}
+
+.newsroom-viewMore {
+  margin: 0 auto 40px;
 }

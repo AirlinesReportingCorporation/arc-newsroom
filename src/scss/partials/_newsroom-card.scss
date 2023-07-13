@@ -1,0 +1,39 @@
+.post-outer-card {
+    border: 1px solid main.$arc-teal;
+    border-radius: 10px;
+    max-height: 375px;
+    height: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.post-top-rectangle{
+   height: 50px;
+   background-color: main.$arc-teal;
+}
+
+.post-inner-card {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 40px 25px;
+
+}
+.post-metadata, .post-desc, .post-title {
+    margin-bottom: 15px;
+}
+
+.post-metadata{
+    font-family: main.$arc-font-semibold;
+}
+
+.post-title{
+    font-family: main.$arc-font-semibold;
+    font-size: 24px;
+}
+
+.post-cta{
+    text-transform: uppercase;
+    a {
+        color: main.$black;
+    }
+}
