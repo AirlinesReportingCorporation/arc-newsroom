@@ -10,16 +10,17 @@ class Newsroom extends Component {
     super();
     this.state = {
       posts: [],
-      curIndex: maxArray,  
+      curIndex: maxArray,
       prevIndex: 0,
       tempIndexHolder: 0,
       showViewMore: false,
+      mediaPosts: [],
     };
   }
-  
 
   componentDidMount() {
     this.getPosts(this.state.prevIndex, this.state.curIndex);
+    this.getMediaPosts();
   }
 
   getPosts = (startIndex, endIndex) => {
@@ -37,7 +38,7 @@ class Newsroom extends Component {
           .lastElementChild.innerHTML,
         text: post.querySelector(".content-block--pageItem__body").innerText,
       });
-      console.log(tempPosts)
+      console.log(tempPosts);
       i++;
       if (tempPosts.length == endIndex) {
         break;
@@ -47,13 +48,43 @@ class Newsroom extends Component {
     // check if done looping full post array, set condition
     if (i == postArray.length) {
       // this.setState({ showViewMore: false });
-      console.log("Data full")
+      console.log("Data full");
     } else {
       // this.setState({ showViewMore: true });
-      console.log("Data loaded")
+      console.log("Data loaded");
     }
     console.log(tempPosts);
     this.setState({ posts: tempPosts });
+  };
+
+  getMediaPosts = () => {
+    var mediaArray = document.querySelectorAll(".rtf > p");
+    let i = 0;
+    while (i < 3) {
+      const post = mediaArray[i];
+      var tempMediaPosts = this.state.mediaPosts;
+      tempMediaPosts.push({
+        link: post.querySelector("a").getAttribute("href"),
+        title: post.querySelector("a").innerText,
+        text: post.querySelector("span").innerText,
+      });
+      console.log(tempMediaPosts);
+      i++;
+      if (tempMediaPosts.length == 3) {
+        break;
+      }
+    }
+    console.log(i == mediaArray.length);
+    // check if done looping full post array, set condition
+    if (i == mediaArray.length) {
+      // this.setState({ showViewMore: false });
+      console.log("Data full");
+    } else {
+      // this.setState({ showViewMore: true });
+      console.log("Data loaded");
+    }
+    console.log(tempMediaPosts);
+    this.setState({ mediaPosts: tempMediaPosts });
   };
 
   showMore = () => {
@@ -125,6 +156,41 @@ class Newsroom extends Component {
           </div>
         </div>
         <NewsroomConnect />
+        <div className="newsroom-container">
+          <div className="row">
+            <div className="col-lg-12">
+              <h2 className="text-left newsroom-sub-header">
+                Recent Media Coverage
+              </h2>
+            </div>
+          </div>
+          <div className="newsroom-media">
+            <div className="row">
+              {this.state.mediaPosts.map((post) => (
+                <NewsroomCard
+                  title={post.title}
+                  desc={post.text}
+                  link={post.link}
+                  titleHeight="120px"
+                  maxHeight="280px"
+                  innerCardPadding="20px"
+                />
+              ))}
+            </div>
+          </div>
+          <div className="text-center newsroom-ctaBtn">
+            <a
+              // onClick={this.showMore}
+              style={{
+                display: this.state.showViewMore ? "inline-block" : "",
+                width: "220px",
+              }}
+              className="ctaBtn newsroom-viewMore"
+            >
+              View More
+            </a>
+          </div>
+        </div>
       </div>
     );
   }

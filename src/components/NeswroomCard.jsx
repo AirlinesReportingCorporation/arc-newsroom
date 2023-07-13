@@ -13,11 +13,11 @@ export default class NewsroomCard extends Component {
             : "col-xs-12 col-sm-6 col-md-4 newsroom-columns"
         }
       >
-        <div className="post-outer-card">
+        <div className="post-outer-card" style={{maxHeight: this.props.maxHeight? this.props.maxHeight: "375px"}}>
           <div className="post-top-rectangle"></div>
-          <div className="post-inner-card">
-            <div className="post-metadata">{this.props.date}</div>
-            <div className="post-title">{this.props.title}</div>
+          <div className="post-inner-card" style={{padding: this.props.innerCardPadding ? this.props.innerCardPadding + " 25px" : "40px 25px"}}>
+            {this.props.date? <div className="post-metadata">{this.props.date}</div> :""}
+            <div className="post-title" style={{height: this.props.titleHeight? this.props.titleHeight: "auto"}}>{this.props.title}</div>
             <div className="post-desc">{this.props.desc}</div>
             <div className="post-cta">
               <a
