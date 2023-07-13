@@ -2,6 +2,7 @@
 
 @import "./partials/newsroom-jumbo";
 @import "./partials/newsroom-card";
+@import "./partials/newsroom-connect";
 
 #app {
   justify-content: center;
@@ -11,6 +12,7 @@
 
 .arc-newsroom-page {
   width: 100%;
+  overflow: hidden;
 }
 
 .arc-sticky-inner {
@@ -29,5 +31,5 @@
 }
 
 .newsroom-viewMore {
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
 }

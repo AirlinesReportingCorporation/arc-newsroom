@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Stickynav } from "arccorp-vars";
 import NewsroomJumbo from "./components/NewsroomJumbo";
 import NewsroomCard from "./components/NeswroomCard";
+import NewsroomConnect from "./components/NewsroomConnect";
 
 class Newsroom extends Component {
   constructor() {
@@ -123,6 +124,7 @@ class Newsroom extends Component {
             </a>
           </div>
         </div>
+        <NewsroomConnect />
       </div>
     );
   }
