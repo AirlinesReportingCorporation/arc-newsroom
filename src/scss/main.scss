@@ -1,0 +1,30 @@
+@use "~arccorp-vars/src/scss/main";
+
+#app {
+  justify-content: center;
+  width: 100%;
+  color: main.$black;
+}
+
+.arc-newsroom-page {
+  width: 100%;
+}
+
+.arc-sticky-inner {
+  background-color: main.$arc-teal;
+}
+
+.newsroom-container {
+  max-width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: auto;
+}
+
+.active-filter {
+  color: main.$arc-teal;
+  border: 2px solid main.$arc-teal !important;
+  padding: 0 5px;
+  border-radius: 10px;
+  font-family: main.$arc-font-bold;
+}
