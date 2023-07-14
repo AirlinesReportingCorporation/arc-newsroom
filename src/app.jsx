@@ -4,6 +4,9 @@ import NewsroomJumbo from "./components/NewsroomJumbo";
 import NewsroomCard from "./components/NeswroomCard";
 import NewsroomConnect from "./components/NewsroomConnect";
 
+import moment from "moment";
+import { motion } from "framer-motion"
+
 class Newsroom extends Component {
   constructor() {
     let maxArray = 6; //temporary max value to make sure it works
@@ -31,11 +34,12 @@ class Newsroom extends Component {
     while (i < endIndex) {
       const post = postArray[i];
       var tempPosts = this.state.posts;
+      let date = post.querySelector(".content-block--pageItem__metadata")
+      .lastElementChild.innerHTML;
       tempPosts.push({
         link: post.querySelector(".ctaLink").getAttribute("href"),
         title: post.querySelector(".ctaLink").innerText,
-        date: post.querySelector(".content-block--pageItem__metadata")
-          .lastElementChild.innerHTML,
+        date: moment(date).format("MMM YYYY"),
         text: post.querySelector(".content-block--pageItem__body").innerText,
       });
       console.log(tempPosts);
@@ -118,9 +122,9 @@ class Newsroom extends Component {
             },
           ]}
         ></Stickynav>
-        <div className="arc-newsroom-top">
+        <motion.div initial={{x: "30vw"}} animate={{x: 0}} transition={{duration: 1}} className="arc-newsroom-top">
           <NewsroomJumbo />
-        </div>
+        </motion.div>
         <div className="newsroom-container newsroom-posts-header">
           <div className="row">
             <div className="col-lg-12">

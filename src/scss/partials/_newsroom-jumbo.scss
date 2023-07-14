@@ -14,10 +14,14 @@
 
 .jumbo-left {
   height: 100%;
+  margin-right: 25px;
+  overflow: hidden;
+}
+.jumbo-left-inner {
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin-right: 25px;
 }
 
 .jumbo-right {

@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { motion } from "framer-motion";
 
 export default class NewsroomJumbo extends Component {
   constructor(props) {
@@ -21,15 +22,18 @@ export default class NewsroomJumbo extends Component {
           {jumboPost.map((jumbo) => (
             <div className="col-lg-4">
               <a href={"https://www2.arccorp.com" + jumbo.link}>
-                <div
-                  className="jumbo-left"
-                  style={{
-                    backgroundImage:
-                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/latest/" +
-                      jumbo.icon +
-                      ".jpg)",
-                  }}
-                ></div>
+                <div className="jumbo-left">
+                  <motion.div
+                    whileHover={{ scale: 1.2 }}
+                    className="jumbo-left-inner"
+                    style={{
+                      backgroundImage:
+                        "url(https://www2.arccorp.com/globalassets/homepage/redesign/latest/" +
+                        jumbo.icon +
+                        ".jpg)",
+                    }}
+                  ></motion.div>
+                </div>
               </a>
             </div>
           ))}
