@@ -1,40 +1,50 @@
 .post-outer-card {
-    border: 1px solid main.$arc-teal;
-    border-radius: 10px;
-    height: 100%;
-    overflow: hidden;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.post-top-rectangle{
-   height: 50px;
-   background-color: main.$arc-teal;
+  border-radius: 10px;
+  height: 397px;
+  background-color: #f7f5f5;
+  margin: 30px auto;
 }
 
-.post-inner-card {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
+.post-inner-top {
+    padding-top: 30px;
+    margin-bottom: auto;
 }
-.post-metadata, .post-desc, .post-title {
-    margin-bottom: 15px;
-}
-
-.post-metadata{
-    font-family: main.$arc-font-semibold;
-    text-transform: uppercase;
+.post-inner-bottom {
+    margin-top: auto;
 }
 
-.post-title{
-    font-family: main.$arc-font-semibold;
-    font-size: 24px;
+.post-cta,
+.post-desc,
+.post-title {
+  margin: inherit 25px;
 }
 
-.post-cta{
-    text-transform: capitalize;
-    a {
-        color: main.$black;
-        font-size: 16px;
-        font-family: main.$arc-font-semibold;
-    }
+.post-title {
+  height: 112px;
+  width: 225px;
+  font-family: main.$arc-font-bold;
+  font-size: 24px;
+  line-height: 28px;
+  color: main.$arc-teal;
+}
+
+.post-desc {
+  height: 90px;
+  width: 223px;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: main.$arc-font-regular;
+}
+
+.post-cta {
+  margin-top: auto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18px;
+  font-family: main.$arc-font-regular;
+
+  span {
+    position: absolute;
+    bottom: 60px;
+  }
 }

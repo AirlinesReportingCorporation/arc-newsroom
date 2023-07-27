@@ -1,6 +1,5 @@
 @use "~arccorp-vars/src/scss/main";
 
-@import "./partials/newsroom-jumbo";
 @import "./partials/newsroom-card";
 @import "./partials/newsroom-connect";
 
@@ -21,13 +20,13 @@
 
 .newsroom-container {
   max-width: 1200px;
-  padding:40px 15px;
+  padding-left: 15px;
+  padding-right: 15px;
   margin: auto;
 }
 
 .newsroom-header {
   font-family: main.$arc-font-regular;
-  margin-bottom: 15px;
 }
 
 .newsroom-viewMore {

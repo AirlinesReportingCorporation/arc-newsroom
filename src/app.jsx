@@ -1,15 +1,12 @@
 import { Component } from "react";
 import { Stickynav } from "arccorp-vars";
-import NewsroomJumbo from "./components/NewsroomJumbo";
 import NewsroomCard from "./components/NeswroomCard";
 import NewsroomConnect from "./components/NewsroomConnect";
-
 import moment from "moment";
-import { motion } from "framer-motion"
 
 class Newsroom extends Component {
   constructor() {
-    let maxArray = 6; //temporary max value to make sure it works
+    let maxArray = 8; //temporary max value to make sure it works
     super();
     this.state = {
       posts: [],
@@ -39,7 +36,7 @@ class Newsroom extends Component {
       tempPosts.push({
         link: post.querySelector(".ctaLink").getAttribute("href"),
         title: post.querySelector(".ctaLink").innerText,
-        date: moment(date).format("MMM YYYY"),
+        date: moment(date).format("MMM DD YYYY"),
         text: post.querySelector(".content-block--pageItem__body").innerText,
       });
       console.log(tempPosts);
@@ -105,31 +102,14 @@ class Newsroom extends Component {
     return (
       <div className="arc-newsroom-page">
         <Stickynav
+        className="bg-color-tarmac"
           title="Newsroom"
-          contactUs="Subscribe"
-          links={[
-            {
-              title: "Newsroom Archive",
-              url: "https://www2.arccorp.com/about-us/newsroom/archive/",
-            },
-            {
-              title: "Media Mentions Archive",
-              url: "https://www2.arccorp.com/about-us/newsroom/media-mentions/",
-            },
-            {
-              title: "Media Inqueries",
-              url: "https://www2.arccorp.com/about-us/newsroom/archive/",
-            },
-          ]}
+          contactUs="Contact Us"
         ></Stickynav>
-        <motion.div initial={{x: "30vw"}} animate={{x: 0}} transition={{duration: 1}} className="arc-newsroom-top">
-          <NewsroomJumbo />
-        </motion.div>
-        <div className="newsroom-container newsroom-posts-header">
+        <div className="newsroom-container newsroom-posts-header" style={{paddingTop: "60px"}}>
           <div className="row">
             <div className="col-lg-12">
-              <h1 className="text-left newsroom-header">Newsroom</h1>
-              <p>News Releases</p>
+              <h2>News Releases</h2>
             </div>
           </div>
         </div>
@@ -155,7 +135,7 @@ class Newsroom extends Component {
               }}
               className="ctaBtn newsroom-viewMore"
             >
-              View More
+              News Release Archive
             </a>
           </div>
         </div>
