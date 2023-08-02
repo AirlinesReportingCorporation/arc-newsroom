@@ -59,22 +59,27 @@ class Newsroom extends Component {
   };
 
   getMediaPosts = () => {
-    var mediaArray = document.querySelectorAll(".rtf > p");
+    let tempArray = Array.from(document.querySelectorAll(".rtf > p"));
+    let mediaArray = []
     let i = 0;
-    while (i < 3) {
-      const post = mediaArray[i];
+    console.log(tempArray)
+    while (i < 8) {
+      const post = tempArray[i];
+      console.log(post)
       var tempMediaPosts = this.state.mediaPosts;
       tempMediaPosts.push({
         link: post.querySelector("a").getAttribute("href"),
         title: post.querySelector("a").innerText,
-        text: post.querySelector("span").innerText,
+        text: post.innerText.replace(post.querySelector("a").innerText, ""),
       });
-      console.log(tempMediaPosts);
       i++;
-      if (tempMediaPosts.length == 3) {
+      if (tempMediaPosts.length == 8) {
         break;
       }
     }
+    console.log("Temp post")
+    console.log(tempMediaPosts);
+    console.log(mediaArray.length + " : media length")
     console.log(i == mediaArray.length);
     // check if done looping full post array, set condition
     if (i == mediaArray.length) {
@@ -139,11 +144,46 @@ class Newsroom extends Component {
             </a>
           </div>
         </div>
-        <NewsroomConnect />
-        <div className="newsroom-container">
+        <div className="newsroom-container newsroom-posts-header">
           <div className="row">
             <div className="col-lg-12">
-              <h2 className="text-left newsroom-sub-header">
+              <h2 className="text-left">
+                Recent Media Coverage
+              </h2>
+            </div>
+          </div>
+          <div className="newsroom-media">
+            <div className="row">
+              {this.state.mediaPosts.map((post) => (
+                <NewsroomCard
+                  title={post.title}
+                  desc={post.text}
+                  link={post.link}
+                  titleHeight="120px"
+                  maxHeight="280px"
+                  innerCardPadding="20px"
+                />
+              ))}
+            </div>
+          </div>
+          <div className="text-center newsroom-ctaBtn">
+            <a
+              // onClick={this.showMore}
+              style={{
+                display: this.state.showViewMore ? "inline-block" : "",
+                width: "220px",
+              }}
+              className="ctaBtn newsroom-viewMore"
+            >
+              View More
+            </a>
+          </div>
+        </div>
+        <NewsroomConnect />
+        <div className="newsroom-container newsroom-posts-header">
+          <div className="row">
+            <div className="col-lg-12">
+              <h2 className="text-left">
                 Recent Media Coverage
               </h2>
             </div>
