@@ -2,7 +2,6 @@
 .newsroom-connect-outer {
     background-color: main.$concourse;
     width: 100%;
-    min-height: 40px;
     margin: 20px 0;
     display: flex;
 }
@@ -10,7 +9,6 @@
 .newsroom-connect-inner {
     margin: 50px auto;
     color: main.$white;
-    height: 200px;
     max-width: 1062px;
     width: 100%;
 
@@ -19,27 +17,21 @@
     }
     .connect-title {
         color: main.$white;
+        font-size: 48px;
+        font-family: main.$arc-font-bold;
+        line-height: 60px;
+    }
+
+    .connect-desc {
+        text-align: left;
+        font-size: 21px;
+        font-family: main.$arc-font-regular;
+        line-height: 27px;
     }
 
     .connect-buttons {
         a {
             border-radius: 10px;
         }
-
-        .ctaBtn.bg-color-white{
-            border: 2px solid main.$concourse;
-        }
-    }
-
-    .connect-contact {
-        justify-content: end;
-        width: 190px;
-        margin-left: auto;
-    }
-
-    .contact-title{
-        font-size: 24px;
-        font-family: main.$arc-font-semibold;
-        margin-bottom: 25px;
     }
 }

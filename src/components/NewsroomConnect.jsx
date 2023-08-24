@@ -6,28 +6,21 @@ export default function NewsroomConnect() {
       <div className="newsroom-connect-inner">
         <div className="row">
           <div className="col-lg-6">
-            <h2 className="connect-title">Connect with ARC</h2>
-            <div className="connect-desc">
-              ARC provides journalists with timely statistics, data analysis and
-              in-depth interviews with subject matter experts.
-            </div>
-            <div className="connect-buttons">
-              <a href="/" className="ctaBtn bg-color-white type-color-concourse">
-                Media Inqueries
-              </a>
-              <a href="/" className="ctaBtn ctaBtn--white-outline" style={{marginLeft: "15px"}}>
-                Media Kit
-              </a>
-            </div>
-          </div>
-          <div className="col-lg-6">
-            <div className="connect-contact">
-                <div className="contact-title">
-                    Contact
-                </div>
-                <div>Randy Spoon <br/>1-700-816-5119<br/>rspoon@arccorp.com </div>
+            <div className="media-kit-inside">
+              <h2 className="connect-title">Media Kit</h2>
+              <div className="connect-desc">
+                For timely data and air travel intelligence, Airlines Reporting
+                Corporation (ARC) is a no-cost valuable resource for members of
+                the media.
+              </div>
+              <div className="connect-buttons">
+                <a href="/" className="ctaBtn ctaBtn--white-outline">
+                  Visit the Media Kit
+                </a>
+              </div>
             </div>
           </div>
+          <div className="col-lg-6"></div>
         </div>
       </div>
     </div>

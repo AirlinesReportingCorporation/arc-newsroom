@@ -2,6 +2,8 @@
 
 @import "./partials/newsroom-card";
 @import "./partials/newsroom-connect";
+@import "./partials/newsroom-jumbo";
+@import "./partials/newsroom-media";
 
 #app {
   justify-content: center;
@@ -40,4 +42,9 @@
 
 .newsroom-media {
   margin-bottom: 40px;
+}
+
+.arc-newsroom-search {
+  display: flex;
+    justify-content: end;
 }

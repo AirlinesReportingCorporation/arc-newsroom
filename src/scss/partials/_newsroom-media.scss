@@ -1,0 +1,33 @@
+.card-background {
+    min-height: 397px;
+    background-color: #000;
+    opacity: 0.4;
+    border-radius: 10px;
+    margin: 15px auto;
+    position: relative;
+}
+.recent-inner{
+    bottom: 0;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: auto;
+    position: absolute;
+}
+
+.recent-title {
+    font-family: main.$arc-font-bold;
+    font-size: 36px;
+    line-height: 40px;
+    color: main.$white;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.recent-company {
+    font-family: main.$arc-font-regular;
+    font-size: 21px;
+    line-height: 27px;
+    color: main.$white;
+    margin-top: auto;
+    margin-bottom: 25px;
+}

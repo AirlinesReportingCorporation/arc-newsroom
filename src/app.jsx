@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Stickynav } from "arccorp-vars";
 import NewsroomCard from "./components/NeswroomCard";
 import NewsroomConnect from "./components/NewsroomConnect";
+import NewsroomJumbo from "./components/NewsroomJumbo";
 import moment from "moment";
 
 class Newsroom extends Component {
@@ -32,7 +33,7 @@ class Newsroom extends Component {
       const post = postArray[i];
       var tempPosts = this.state.posts;
       let date = post.querySelector(".content-block--pageItem__metadata")
-      .lastElementChild.innerHTML;
+        .lastElementChild.innerHTML;
       tempPosts.push({
         link: post.querySelector(".ctaLink").getAttribute("href"),
         title: post.querySelector(".ctaLink").innerText,
@@ -60,12 +61,12 @@ class Newsroom extends Component {
 
   getMediaPosts = () => {
     let tempArray = Array.from(document.querySelectorAll(".rtf > p"));
-    let mediaArray = []
+    let mediaArray = [];
     let i = 0;
-    console.log(tempArray)
+    console.log(tempArray);
     while (i < 8) {
       const post = tempArray[i];
-      console.log(post)
+      console.log(post);
       var tempMediaPosts = this.state.mediaPosts;
       tempMediaPosts.push({
         link: post.querySelector("a").getAttribute("href"),
@@ -77,9 +78,9 @@ class Newsroom extends Component {
         break;
       }
     }
-    console.log("Temp post")
+    console.log("Temp post");
     console.log(tempMediaPosts);
-    console.log(mediaArray.length + " : media length")
+    console.log(mediaArray.length + " : media length");
     console.log(i == mediaArray.length);
     // check if done looping full post array, set condition
     if (i == mediaArray.length) {
@@ -104,17 +105,24 @@ class Newsroom extends Component {
   };
 
   render() {
+    let recentMedia = this.state.mediaPosts.slice(0, 3);
     return (
       <div className="arc-newsroom-page">
         <Stickynav
-        className="bg-color-tarmac"
+          className="bg-color-tarmac"
           title="Newsroom"
           contactUs="Contact Us"
         ></Stickynav>
-        <div className="newsroom-container newsroom-posts-header" style={{paddingTop: "60px"}}>
+        <NewsroomJumbo />
+        <div className="newsroom-container newsroom-posts-header">
           <div className="row">
-            <div className="col-lg-12">
+            <div className="col-lg-6">
               <h2>News Releases</h2>
+            </div>
+            <div className="col-lg-6">
+              <div className="arc-newsroom-search">
+                search bar here
+              </div>
             </div>
           </div>
         </div>
@@ -147,22 +155,34 @@ class Newsroom extends Component {
         <div className="newsroom-container newsroom-posts-header">
           <div className="row">
             <div className="col-lg-12">
-              <h2 className="text-left">
-                Recent Media Coverage
-              </h2>
+              <h2 className="text-left">Recent Media Coverage</h2>
             </div>
           </div>
           <div className="newsroom-media">
             <div className="row">
-              {this.state.mediaPosts.map((post) => (
-                <NewsroomCard
-                  title={post.title}
-                  desc={post.text}
-                  link={post.link}
-                  titleHeight="120px"
-                  maxHeight="280px"
-                  innerCardPadding="20px"
-                />
+              {recentMedia.splice(0, 1).map((post) => (
+                <div className="col-lg-12">
+                  <a href={post.link}>
+                    <div className="card-background">
+                      <div className="recent-inner">
+                        <div className="recent-title">{post.title}</div>
+                        <div className="recent-company">{post.text}</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              ))}
+              {recentMedia.splice(0, 2).map((post) => (
+                <div className="col-lg-6">
+                  <a href={post.link}>
+                    <div className="card-background">
+                      <div className="recent-inner">
+                        <div className="recent-title">{post.title}</div>
+                        <div className="recent-company">{post.text}</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
               ))}
             </div>
           </div>
@@ -180,41 +200,6 @@ class Newsroom extends Component {
           </div>
         </div>
         <NewsroomConnect />
-        <div className="newsroom-container newsroom-posts-header">
-          <div className="row">
-            <div className="col-lg-12">
-              <h2 className="text-left">
-                Recent Media Coverage
-              </h2>
-            </div>
-          </div>
-          <div className="newsroom-media">
-            <div className="row">
-              {this.state.mediaPosts.map((post) => (
-                <NewsroomCard
-                  title={post.title}
-                  desc={post.text}
-                  link={post.link}
-                  titleHeight="120px"
-                  maxHeight="280px"
-                  innerCardPadding="20px"
-                />
-              ))}
-            </div>
-          </div>
-          <div className="text-center newsroom-ctaBtn">
-            <a
-              // onClick={this.showMore}
-              style={{
-                display: this.state.showViewMore ? "inline-block" : "",
-                width: "220px",
-              }}
-              className="ctaBtn newsroom-viewMore"
-            >
-              View More
-            </a>
-          </div>
-        </div>
       </div>
     );
   }
