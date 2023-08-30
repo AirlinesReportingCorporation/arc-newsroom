@@ -1,57 +1,51 @@
 import { Component } from "react";
-import { motion } from "framer-motion";
 
-export default class NewsroomJumbo extends Component {
+class NewsroomJumbo extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    var jumboPost = [
-      {
-        icon: "arc-is-ndc-ready",
-        timeread: "2 min read",
-        title: "April U.S. Travel Agency Air Ticket Sales Total $8.7 Billion",
-        text: "Average monthly ticket price falls below year-over-year levels for the first time since 2021",
-        link: "/newsroom/2023-news-releases/april-2023-ticket-sales/",
-        date: "April 2023",
-      },
-    ];
+    var jumboPost = [{
+      icon: "arc-is-ndc-ready",
+      date: "NOV 23, 2022",
+      timeread: "1 min read",
+      title: "ARC Implements NDC with Finnair",
+      text: "Finnair is the 24th Participating Airline in ARC Direct Connect",
+      link: '/about-us/newsroom/2023-news-releases/arc-ndc-with-finnair/',
+    }];
     return (
       <div className="newsroom-jumbo">
         <div className="row no-gutters jumbo-row">
           {jumboPost.map((jumbo) => (
-            <div className="col-lg-4">
+            <div className="col-lg-6">
               <a href={"https://www2.arccorp.com" + jumbo.link}>
-                <div className="jumbo-left">
-                  <motion.div
-                    whileHover={{ scale: 1.2 }}
-                    className="jumbo-left-inner"
-                    style={{
-                      backgroundImage:
-                        "url(https://www2.arccorp.com/globalassets/homepage/redesign/latest/" +
-                        jumbo.icon +
-                        ".jpg)",
-                    }}
-                  ></motion.div>
+                <div
+                  className="jumbo-left"
+                  style={{
+                    backgroundImage:
+                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/latest/" +
+                      jumbo.icon +
+                      ".jpg)",
+                  }}
+                >
+                  <div className="newsroom-jumbo-image">
+                  </div>
                 </div>
               </a>
             </div>
           ))}
-          <div className="col-lg">
+          <div className="col-sm-12 col-lg-6">
             <div className="jumbo-right">
               {jumboPost.map((jumbo) => (
-                <div className="jumbo-info">
+                <div className="jumbo-info bg-color-tarmac">
                   <div className="jumbo-metadata">
-                    {jumbo.date}{" "}
-                    <span style={{ marginLeft: "5px", marginRight: "5px" }}>
-                      •
-                    </span>{" "}
-                    {jumbo.timeread}
+                    <span>{jumbo.date + " "}</span>•<span>{" "+ jumbo.timeread}</span>
                   </div>
                   <div
                     className="newsroom-jumbo-title"
                     style={{
-                      color: this.props.color ? this.props.color : "black",
+                      color: this.props.color ? this.props.color : "white",
                     }}
                   >
                     <a href={"https://www2.arccorp.com" + jumbo.link}>
@@ -59,15 +53,6 @@ export default class NewsroomJumbo extends Component {
                     </a>
                   </div>
                   <div className="jumbo-text">{jumbo.text}</div>
-                  <div>
-                    <a href={"https://www2.arccorp.com" + jumbo.link}>
-                      Read More{" "}
-                      <i
-                        className="fas fa-chevron-right"
-                        style={{ fontSize: "11px", marginLeft: "5px" }}
-                      ></i>
-                    </a>
-                  </div>
                 </div>
               ))}
             </div>
@@ -77,3 +62,5 @@ export default class NewsroomJumbo extends Component {
     );
   }
 }
+
+export default NewsroomJumbo;

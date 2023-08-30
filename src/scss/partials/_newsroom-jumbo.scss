@@ -1,60 +1,88 @@
+@use "~arccorp-vars/src/scss/main.scss";
+
+.arc-newsroom-page {
+  width: 100%;
+}
+
 .newsroom-jumbo {
-    height: 100%;
-    margin: 40px 0px 60px;
-    margin-bottom: 120px;
-    border: main.$altitude-gray 2px solid;
-    border-radius: 10px;
-    transform: translateX(20%);
-    overflow: hidden;
+  padding-bottom: 130px;
+  max-height: 800px;
+  height: 100%;
+  padding-top: 60px;
+}
+
+.jumbo-row {
+  max-width: none;
+}
+
+.featured-row {
+  max-width: 600px;
+  padding-right: 15px;
+  padding-left: 18px;
+}
+
+.jumbo-text,
+.newsroom-jumbo-title {
+  color: main.$white;
+  padding-left: 15px;
+}
+
+.newsroom-jumbo-title a {
+  font-size: 45px;
+  max-width: 570px;
+}
+
+.jumbo-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 595px;
+}
+
+.jumbo-metadata {
+  font-family: main.$arc-font-bold;
+  color: main.$white;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 15px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+}
+
+.jumbo-text {
+  padding-top: 20px;
+  font-family: main.$arc-font-regular;
+  font-size: 18px;
+  max-width: 530px;
+  padding-bottom: 60px;
+  padding-left: 15px;
+}
+
+.jumbo-left {
+  margin-left: auto;
+  max-width: 605px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: inset 0 0 0 2000px rgba(42, 43, 44, 0.3);
+  border-right: 15px solid main.$tarmac;
+}
+
+.newsroom-jumbo-title {
+  font-family: SourceSansPro-Bold, helvetica, arial, sans-serif;
+  line-height: 43px;
+  font-size: 32px;
+  max-width: 550px;
+  display: block;
+
+  a {
+    color: inherit;
   }
-  
-  .jumbo-row {
-    max-width: none;
+  a:hover {
+    color: inherit;
   }
-  
-  .jumbo-left {
-    height: 100%;
-    margin-right: 25px;
-    overflow: hidden;
-  }
-  .jumbo-left-inner {
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
-  
-  .jumbo-right {
-      height: 470px;
-  }
-  
-  .jumbo-info {
-    padding: 25px 10px;
-  
-    a {
-      color: main.$black;
-      font-family: main.$arc-font-regular;
-      &:hover {
-        color: main.$black;
-      }
-    }
-  }
-  
-  .jumbo-metadata {
-    text-transform: uppercase;
-    font-family: main.$arc-font-semibold;
-    margin-bottom: 25px;
-  }
-  .newsroom-jumbo-title {
-    font-size: 3.5rem;
-    line-height: 60px;
-    margin-bottom: 25px;
-    width: 550px;
-    height: 182px;
-    
-  }
-  
-  .jumbo-text {
-      width: 415px;
-      margin-bottom: 25px;
-  }
+} 
