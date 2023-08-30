@@ -141,6 +141,7 @@ class Newsroom extends Component {
           </div>
           <div className="text-center newsroom-ctaBtn">
             <a
+            href="https://www2.arccorp.com/about-us/newsroom/archive/"
               // onClick={this.showMore}
               style={{
                 display: this.state.showViewMore ? "inline-block" : "",
@@ -188,6 +189,7 @@ class Newsroom extends Component {
           </div>
           <div className="text-center newsroom-ctaBtn">
             <a
+            href="https://www2.arccorp.com/about-us/newsroom/media-mentions/"
               // onClick={this.showMore}
               style={{
                 display: this.state.showViewMore ? "inline-block" : "",
