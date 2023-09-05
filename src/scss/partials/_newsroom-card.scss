@@ -20,11 +20,11 @@
 }
 
 .post-title {
-  height: 112px;
   width: 225px;
+  padding-bottom: 10px;
   font-family: main.$arc-font-bold;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 22px;
+  line-height: 25px;
   color: main.$arc-teal;
   &:hover {
     color: #20b8d1
