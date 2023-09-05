@@ -36,6 +36,10 @@
   font-family: main.$arc-font-regular;
 }
 
+a.post-link, a.post-link:hover {
+  color: unset;
+}
+
 .post-cta {
   margin-top: auto;
   font-size: 14px;

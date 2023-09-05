@@ -14,15 +14,17 @@ export default class NewsroomCard extends Component {
         }
       >
         <div className="post-outer-card">
-          <div className="post-inner-top">
-            <div className="post-title">{this.props.title}</div>
-            <div className="post-desc">{this.props.desc}</div>
-          </div>
-          <div className="post-inner-bottom">
-            <div className="post-cta">
-              <span>{this.props.date}</span>
+          <a href={"https://www2.arccorp.com/" + this.props.link} className="post-link">
+            <div className="post-inner-top">
+              <div className="post-title">{this.props.title}</div>
+              <div className="post-desc">{this.props.desc}</div>
             </div>
-          </div>
+            <div className="post-inner-bottom">
+              <div className="post-cta">
+                <span>{this.props.date}</span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     );
