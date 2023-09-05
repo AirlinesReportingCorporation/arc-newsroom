@@ -26,6 +26,9 @@
   font-size: 24px;
   line-height: 28px;
   color: main.$arc-teal;
+  &:hover {
+    color: #20b8d1
+  }
 }
 
 .post-desc {
@@ -38,6 +41,12 @@
 
 a.post-link, a.post-link:hover {
   color: unset;
+}
+
+a.post-link:hover {
+  .post-title {
+    color: #20b8d1
+  }
 }
 
 .post-cta {
