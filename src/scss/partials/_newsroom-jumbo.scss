@@ -27,11 +27,6 @@
   padding-left: 15px;
 }
 
-.newsroom-jumbo-title a {
-  font-size: 45px;
-  max-width: 570px;
-}
-
 .jumbo-info {
   display: flex;
   flex-direction: column;
@@ -52,10 +47,12 @@
 .jumbo-text {
   padding-top: 20px;
   font-family: main.$arc-font-regular;
-  font-size: 18px;
   max-width: 530px;
   padding-bottom: 60px;
   padding-left: 15px;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 23px;
 }
 
 .jumbo-left {
@@ -74,10 +71,10 @@
 
 .newsroom-jumbo-title {
   font-family: SourceSansPro-Bold, helvetica, arial, sans-serif;
-  line-height: 43px;
-  font-size: 32px;
-  max-width: 550px;
-  display: block;
+  max-width: 500px;
+  font-size: 48px;
+  letter-spacing: 0;
+  line-height: 46px;
 
   a {
     color: inherit;
