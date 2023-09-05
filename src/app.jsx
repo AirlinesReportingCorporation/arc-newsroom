@@ -37,7 +37,7 @@ class Newsroom extends Component {
       tempPosts.push({
         link: post.querySelector(".ctaLink").getAttribute("href"),
         title: post.querySelector(".ctaLink").innerText,
-        date: moment(date).format("MMM DD YYYY"),
+        date: moment(date).format("MMM DD, YYYY"),
         text: post.querySelector(".content-block--pageItem__body").innerText,
       });
       console.log(tempPosts);
@@ -111,7 +111,8 @@ class Newsroom extends Component {
         <Stickynav
           className="bg-color-tarmac"
           title="Newsroom"
-          contactUs="Contact Us"
+          contactUs="Subscribe to ARC News"
+          rightLink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
         ></Stickynav>
         <NewsroomJumbo />
         <div className="newsroom-container newsroom-posts-header">
