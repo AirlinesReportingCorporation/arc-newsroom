@@ -193,12 +193,11 @@ class Newsroom extends Component {
             href="https://www2.arccorp.com/about-us/newsroom/media-mentions/"
               // onClick={this.showMore}
               style={{
-                display: this.state.showViewMore ? "inline-block" : "",
-                width: "220px",
+                width: "243px",
               }}
               className="ctaBtn newsroom-viewMore"
             >
-              View More
+              Media Mentions Archive
             </a>
           </div>
         </div>
