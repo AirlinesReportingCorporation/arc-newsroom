@@ -103,7 +103,8 @@ export default class MediaArchive extends Component {
           contactUs="Subscribe to ARC News"
           rightLink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
         ></Stickynav>
-         <div className="row">
+         <div className="media-archive-container">
+          <div className="row">
             <div className="col-lg-6">
               <h2>Media Mentions Archive</h2>
             </div>
@@ -113,6 +114,10 @@ export default class MediaArchive extends Component {
               </div>
             </div>
           </div>
+        </div>
+        <div>
+            archives here
+        </div>
       </div>
     );
   }

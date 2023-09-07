@@ -9,3 +9,23 @@
   width: 100%;
   overflow: hidden;
 }
+
+.media-archive-container {
+  margin-top: 60px;
+  max-width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 60px;
+  border-bottom: 1px solid main.$black;
+}
+
+.arc-newsroom-search {
+  display: flex;
+  justify-content: end;
+}
+
+.media-archive-mention {
+  border-bottom: 1px solid main.$black;
+}
