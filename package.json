@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.jsx",
   "scripts": {
-    "start": "webpack serve --mode development",
-    "build": "webpack"
+    "start": "npx webpack serve --config webpack.dev.js",
+    "dev": "npm start",
+    "build": "webpack --config webpack.prod.js",
+    "test": "npm start"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,7 @@
     "framer-motion": "^9.1.7",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
+    "node-polyfill-webpack-plugin": "^2.0.1",
     "react": "^18.2.0",
     "react-app-polyfill": "^3.0.0",
     "react-dom": "^18.2.0"

@@ -1,8 +1,13 @@
-require('file-loader?name=[name].[ext]!./index.html');
-import ReactDOM from 'react-dom/client';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Newsroom from './app';
 import "./scss/main.scss";
 
-const root = ReactDOM.createRoot(document.getElementById('app'))
+var mountNode = document.getElementById('app');
+var value = document.getElementById('app').getAttribute("episode");
 
-root.render(<Newsroom />); 
+console.log(value);
+ReactDOM.render(<Newsroom />, mountNode); 

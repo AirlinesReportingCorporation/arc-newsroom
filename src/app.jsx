@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { Stickynav } from "arccorp-vars";
 import NewsroomCard from "./components/NeswroomCard";
 import NewsroomConnect from "./components/NewsroomConnect";

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 
 class NewsroomJumbo extends Component {
   constructor(props) {

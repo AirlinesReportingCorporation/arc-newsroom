@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 
 export default class NewsroomCard extends Component {
   constructor(props) {
