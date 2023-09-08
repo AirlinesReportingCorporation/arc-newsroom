@@ -6,10 +6,15 @@ import "./scss/media.scss";
 export default class MediaArchive extends Component {
   constructor() {
     super();
+    this.state = {
+      // array for the years
+      mediaYear: [],
+      // array of objects for each year's post
+      mediaArray: [],
+    };
   }
 
   componentDidMount() {
-    console.log("media archive");
     this.getMediaPosts();
   }
 
@@ -34,18 +39,16 @@ export default class MediaArchive extends Component {
 
     let combined = currentMedia.concat(archivedMedia);
 
-    // array for the years
-    let mediaYear = [];
-    // array of objects for each year's post
-    let mediaArray = [];
+    //temp array to hold the tempmedia array dumps;
+    let tempMediaArray = [];
     // temp array to hold the array of objects
     let tempMedia = [];
 
     for (let i = 0; i < combined.length; i++) {
       if (combined[i].localName == "h2") {
-        mediaYear.push(combined[i].innerText);
+        this.state.mediaYear.push(combined[i].innerText);
         if (tempMedia.length > 0) {
-          mediaArray.push(tempMedia);
+          tempMediaArray.push(tempMedia);
           tempMedia = [];
         }
       }
@@ -60,41 +63,12 @@ export default class MediaArchive extends Component {
         });
       }
     }
-    mediaArray.push(tempMedia);
-    // while (i < currentMedia.length || i < archivedMedia.length) {
-    //     if (h2 in currentMedia || h2 in archivedMedia) {
-    //         console.log(h2)
-    //     }
-    //   const post = tempArray[i];
-    //   console.log(post);
-    //   var tempMediaPosts = this.state.mediaPosts;
-    //   tempMediaPosts.push({
-    //     link: post.querySelector("a").getAttribute("href"),
-    //     title: post.querySelector("a").innerText,
-    //     text: post.innerText.replace(post.querySelector("a").innerText, ""),
-    //   });
-    //   i++;
-    //   if (tempMediaPosts.length == 8) {
-    //     break;
-    //   }
-    // }
-    // console.log("Temp post");
-    // console.log(tempMediaPosts);
-    // console.log(mediaArray.length + " : media length");
-    // console.log(i == mediaArray.length);
-    // // check if done looping full post array, set condition
-    // if (i == mediaArray.length) {
-    //   // this.setState({ showViewMore: false });
-    //   console.log("Data full");
-    // } else {
-    //   // this.setState({ showViewMore: true });
-    //   console.log("Data loaded");
-    //}
-    // console.log(tempMediaPosts);
-    // this.setState({ mediaPosts: tempMediaPosts });
+    tempMediaArray.push(tempMedia);
+    this.setState({ mediaArray: tempMediaArray });
   };
 
   render() {
+    console.log(this.state.mediaArray);
     return (
       <div className="media-archive-page">
         <Stickynav
@@ -103,20 +77,42 @@ export default class MediaArchive extends Component {
           contactUs="Subscribe to ARC News"
           rightLink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
         ></Stickynav>
-         <div className="media-archive-container">
+        <div className="media-archive-container archive-header">
           <div className="row">
             <div className="col-lg-6">
               <h2>Media Mentions Archive</h2>
             </div>
             <div className="col-lg-6">
-              <div className="arc-newsroom-search">
-                search bar here
-              </div>
+              <div className="arc-newsroom-search">search bar here</div>
             </div>
           </div>
         </div>
         <div>
-            archives here
+          <div className="media-archive-container">
+            {this.state.mediaArray.map((postYear, i) => {
+              console.log(postYear);
+              postYear.map((post) => {
+                return (
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <div className="mention-inner">
+                        <div className="mention-tags">
+                          MEDIA MENTIONS <span className="tags-dot">•</span>{" "}
+                          {post.text}
+                        </div>
+                        <div className="mention-title">
+                          <a href={post.url}>{post.title}</a>
+                        </div>
+                        <div className="mention-date">
+                          {post.date ? post.date : this.state.mediaYear[i]}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              });
+            })}
+          </div>
         </div>
       </div>
     );
