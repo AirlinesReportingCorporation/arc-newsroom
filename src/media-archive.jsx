@@ -11,6 +11,8 @@ class MediaArchive extends Component {
       mediaYear: [],
       // array of objects for each year's post
       mediaArray: [],
+
+      expanded : false,
     };
   }
 
@@ -57,6 +59,10 @@ class MediaArchive extends Component {
     this.setState({ mediaArray: tempMediaArray });
   };
 
+  showMore = () => {
+    this.state.expanded ? this.setState({expanded: false}) : this.setState({expanded: true})
+  }
+
   render() {
     return (
       <div className="media-archive-page">
@@ -76,31 +82,72 @@ class MediaArchive extends Component {
             </div>
           </div>
         </div>
-        <div></div>
         <div>
-          <div className="media-archive-container">
+          <div className="media-archive-container media-archive-posts">
             {this.state.mediaArray.map((postYear, i) => {
-              return postYear.map((post) => {
-                return (
-                  <div className="row">
-                    <div className="col-lg-12">
-                      <div className="mention-inner">
-                        <div className="mention-tags">
-                          MEDIA MENTIONS <span className="tags-dot">•</span>{" "}
-                          {post.text}
+              // if the show more button hasn't been push
+                if (!this.state.expanded) {
+                  // Use the index of the postYear to paginate only the most recent year
+                  if (i < 1) {
+                    return postYear.map((post) => {
+                      return (
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <div className="mention-inner">
+                              <div className="mention-tags">
+                                MEDIA MENTIONS <span className="tags-dot">•</span>{" "}
+                                {post.text}
+                              </div>
+                              <div className="mention-title">
+                                <a href={post.link}>{post.title}</a>
+                              </div>
+                              <div className="mention-date">
+                                {post.date ? post.date : this.state.mediaYear[i]}
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="mention-title">
-                          <a href={post.link}>{post.title}</a>
-                        </div>
-                        <div className="mention-date">
-                          {post.date ? post.date : this.state.mediaYear[i]}
+                      );
+                    });
+                  }
+                }
+                // Else, when we want to view more
+                else {
+                  return postYear.map((post) => {
+                  return (
+                    <div className="row">
+                      <div className="col-lg-12">
+                        <div className="mention-inner">
+                          <div className="mention-tags">
+                            MEDIA MENTIONS <span className="tags-dot">•</span>{" "}
+                            {post.text}
+                          </div>
+                          <div className="mention-title">
+                            <a href={post.link}>{post.title}</a>
+                          </div>
+                          <div className="mention-date">
+                            {post.date ? post.date : this.state.mediaYear[i]}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                );
-              });
+                  );
+                });
+                }
+             
             })}
+          </div>
+          <div className="media-archive-container">
+            <div className="media-archive-button">
+              <button className="ctaBtn" onClick={this.showMore}>
+                {console.log(this.state.expanded)}
+                {this.state.expanded ? (
+                  <span>View less</span>
+                ) : (
+                  <span>View more</span>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
