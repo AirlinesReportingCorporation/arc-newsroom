@@ -5,17 +5,21 @@ import NewsroomConnect from "./components/NewsroomConnect";
 import NewsroomJumbo from "./components/NewsroomJumbo";
 import moment from "moment";
 
+import SelectSearch, { fuzzySearch } from "react-select-search";
+
 class Newsroom extends Component {
   constructor() {
     let maxArray = 8; //temporary max value to make sure it works
     super();
     this.state = {
       posts: [],
+      searchPosts: [],
       curIndex: maxArray,
       prevIndex: 0,
       tempIndexHolder: 0,
       showViewMore: false,
       mediaPosts: [],
+      searchValue: "",
     };
   }
 
@@ -23,6 +27,11 @@ class Newsroom extends Component {
     this.getPosts(this.state.prevIndex, this.state.curIndex);
     this.getMediaPosts();
   }
+
+  setSearchValue = (val) => {
+    console.log(val);
+    this.setState({ searchValue: val });
+  };
 
   getPosts = (startIndex, endIndex) => {
     var postArray = document.querySelectorAll(
@@ -32,21 +41,36 @@ class Newsroom extends Component {
     while (i < endIndex) {
       const post = postArray[i];
       var tempPosts = this.state.posts;
+      var tempSearchPosts = this.state.searchPosts;
+
       let date = post.querySelector(".content-block--pageItem__metadata")
         .lastElementChild.innerHTML;
+
       tempPosts.push({
         link: post.querySelector(".ctaLink").getAttribute("href"),
         title: post.querySelector(".ctaLink").innerText,
         date: moment(date).format("MMM DD, YYYY"),
         text: post.querySelector(".content-block--pageItem__body").innerText,
       });
-      console.log(tempPosts);
+
       i++;
       if (tempPosts.length == endIndex) {
         break;
       }
     }
-    console.log(i == postArray.length);
+
+    for (let i = 0; i < postArray.length; i++) {
+      const post = postArray[i];
+      tempSearchPosts.push({
+        name: post.querySelector(".ctaLink").innerText,
+        value:
+          post.querySelector(".ctaLink").innerText +
+          " " +
+          post.querySelector(".content-block--pageItem__body").innerText,
+      });
+    }
+    console.log(tempSearchPosts);
+
     // check if done looping full post array, set condition
     if (i == postArray.length) {
       // this.setState({ showViewMore: false });
@@ -55,33 +79,35 @@ class Newsroom extends Component {
       // this.setState({ showViewMore: true });
       console.log("Data loaded");
     }
-    console.log(tempPosts);
+
     this.setState({ posts: tempPosts });
+    this.setState({ searchPosts: tempSearchPosts });
   };
 
   getMediaPosts = () => {
     let tempArray = Array.from(document.querySelectorAll(".rtf > p"));
     let mediaArray = [];
     let i = 0;
-    console.log(tempArray);
+
     while (i < 8) {
       const post = tempArray[i];
-      console.log(post);
+
       var tempMediaPosts = this.state.mediaPosts;
       tempMediaPosts.push({
         link: post.querySelector("a").getAttribute("href"),
         title: post.querySelector("a").innerText,
         text: post.innerText.replace(post.querySelector("a").innerText, ""),
+        image:
+          "https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom" +
+          ((post.querySelector("a").innerText.length % 7) + 1) +
+          ".jpg",
       });
       i++;
       if (tempMediaPosts.length == 8) {
         break;
       }
     }
-    console.log("Temp post");
-    console.log(tempMediaPosts);
-    console.log(mediaArray.length + " : media length");
-    console.log(i == mediaArray.length);
+
     // check if done looping full post array, set condition
     if (i == mediaArray.length) {
       // this.setState({ showViewMore: false });
@@ -90,7 +116,7 @@ class Newsroom extends Component {
       // this.setState({ showViewMore: true });
       console.log("Data loaded");
     }
-    console.log(tempMediaPosts);
+
     this.setState({ mediaPosts: tempMediaPosts });
   };
 
@@ -122,7 +148,10 @@ class Newsroom extends Component {
             </div>
             <div className="col-lg-6">
               <div className="arc-newsroom-search">
-                search bar here
+                <form action="/archive.html">
+                  <input placeholder="Search" type="text" name="q" id="newsroom-search" />
+                  <i class="fas fa-search"></i>
+                </form>
               </div>
             </div>
           </div>
@@ -130,8 +159,9 @@ class Newsroom extends Component {
         <div className="newsroom-posts">
           <div className="newsroom-container">
             <div className="row">
-              {this.state.posts.map((post) => (
+              {this.state.posts.map((post, i) => (
                 <NewsroomCard
+                  key={i}
                   date={post.date}
                   title={post.title}
                   desc={post.text}
@@ -142,7 +172,7 @@ class Newsroom extends Component {
           </div>
           <div className="text-center newsroom-ctaBtn">
             <a
-            href="https://www2.arccorp.com/about-us/newsroom/archive/"
+              href="https://www2.arccorp.com/about-us/newsroom/archive/"
               // onClick={this.showMore}
               style={{
                 display: this.state.showViewMore ? "inline-block" : "",
@@ -162,10 +192,17 @@ class Newsroom extends Component {
           </div>
           <div className="newsroom-media">
             <div className="row">
-              {recentMedia.splice(0, 1).map((post) => (
-                <div className="col-lg-12">
+              {recentMedia.splice(0, 1).map((post, i) => (
+                <div className="col-lg-12" key={i}>
                   <a href={post.link}>
-                    <div className="card-background">
+                    <div
+                      className="card-background"
+                      style={{
+                        background:
+                          "url(" + post.image + ") center center no-repeat",
+                        backgroundSize: "cover",
+                      }}
+                    >
                       <div className="recent-inner">
                         <div className="recent-title">{post.title}</div>
                         <div className="recent-company">{post.text}</div>
@@ -174,10 +211,18 @@ class Newsroom extends Component {
                   </a>
                 </div>
               ))}
-              {recentMedia.splice(0, 2).map((post) => (
-                <div className="col-lg-6">
+              {recentMedia.splice(0, 2).map((post, i) => (
+                <div className="col-lg-6" key={i}>
                   <a href={post.link}>
-                    <div className="card-background">
+                    <div
+                      className="card-background"
+                      style={{
+                        background:
+                          "url(" + post.image + ") center center no-repeat",
+                        backgroundSize: "cover",
+                      }}
+                    >
+                      <div className="newsroom-card-overlay"></div>
                       <div className="recent-inner">
                         <div className="recent-title">{post.title}</div>
                         <div className="recent-company">{post.text}</div>
@@ -190,7 +235,7 @@ class Newsroom extends Component {
           </div>
           <div className="text-center newsroom-ctaBtn">
             <a
-            href="https://www2.arccorp.com/about-us/newsroom/media-mentions/"
+              href="https://www2.arccorp.com/about-us/newsroom/media-mentions/"
               // onClick={this.showMore}
               style={{
                 width: "243px",

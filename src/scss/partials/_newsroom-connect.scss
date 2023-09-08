@@ -1,13 +1,14 @@
 
 .newsroom-connect-outer {
-    background-color: main.$concourse;
+    background: url('https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom-media-kit.png') center center no-repeat;
+    background-size: cover;
     width: 100%;
     margin: 20px 0;
     display: flex;
 }
 
 .newsroom-connect-inner {
-    margin: 50px auto;
+    margin: 80px auto;
     color: main.$white;
     max-width: 1200px;
     width: 100%;

@@ -14,7 +14,7 @@ export default function NewsroomConnect() {
                 the media.
               </div>
               <div className="connect-buttons">
-                <a href="/" className="ctaBtn ctaBtn--white-outline">
+                <a href="https://www2.arccorp.com/about-us/newsroom/media-kit/" className="ctaBtn ctaBtn--white-outline">
                   Visit the Media Kit
                 </a>
               </div>
