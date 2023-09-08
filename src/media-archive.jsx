@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import { Stickynav } from "arccorp-vars";
 import "./scss/media.scss";
 
-export default class MediaArchive extends Component {
+class MediaArchive extends Component {
   constructor() {
     super();
     this.state = {
@@ -17,16 +17,6 @@ export default class MediaArchive extends Component {
   componentDidMount() {
     this.getMediaPosts();
   }
-
-  //   All of the Archive Mentions
-  //let archivedMedia = Array.from(document.querySelectorAll(".rtf > #archive")[0].children)
-
-  // All Current Mentions
-  //let tempArray = Array.from(document.querySelectorAll(".rtf > *"));
-  // Grabs the index of the div that holds the archive (since we only want the p tags before)
-  //let archiveIndex = tempArray.findIndex(item => item.localName === "div");
-  // return only the h2 and the p tags before the archive div
-  // tempArray.splice(0, archiveIndex)
 
   getMediaPosts = () => {
     let archivedMedia = Array.from(
@@ -68,7 +58,6 @@ export default class MediaArchive extends Component {
   };
 
   render() {
-    console.log(this.state.mediaArray);
     return (
       <div className="media-archive-page">
         <Stickynav
@@ -87,11 +76,11 @@ export default class MediaArchive extends Component {
             </div>
           </div>
         </div>
+        <div></div>
         <div>
           <div className="media-archive-container">
             {this.state.mediaArray.map((postYear, i) => {
-              console.log(postYear);
-              postYear.map((post) => {
+              return postYear.map((post) => {
                 return (
                   <div className="row">
                     <div className="col-lg-12">
@@ -101,7 +90,7 @@ export default class MediaArchive extends Component {
                           {post.text}
                         </div>
                         <div className="mention-title">
-                          <a href={post.url}>{post.title}</a>
+                          <a href={post.link}>{post.title}</a>
                         </div>
                         <div className="mention-date">
                           {post.date ? post.date : this.state.mediaYear[i]}
@@ -119,6 +108,8 @@ export default class MediaArchive extends Component {
   }
 }
 
-const root = ReactDOM.createRoot(document.getElementById("app"));
+export default MediaArchive;
 
-root.render(<MediaArchive />);
+var mountNode = document.getElementById("app");
+
+ReactDOM.render(<MediaArchive />, mountNode);
