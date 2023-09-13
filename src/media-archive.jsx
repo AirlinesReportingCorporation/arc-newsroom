@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Stickynav } from "arccorp-vars";
+import Fuse from "fuse.js";
 import "./scss/media.scss";
 
 class MediaArchive extends Component {
@@ -11,7 +12,8 @@ class MediaArchive extends Component {
       mediaYear: [],
       // array of objects for each year's post
       mediaArray: [],
-
+      searchValue: "",
+      searchResults: [],
       expanded : false,
     };
   }
@@ -19,6 +21,28 @@ class MediaArchive extends Component {
   componentDidMount() {
     this.getMediaPosts();
   }
+
+  setSearchValue = (e) => {
+    var value = typeof e === "string" ? e : e.target.value;
+    var tempResults = [];
+    console.log(value);
+    console.log(this.state.mediaArray);
+    
+    //concat arrays
+    for (let i = 0; i < this.state.mediaArray.length; i++) {
+      const arr = this.state.mediaArray[i];
+      const fuse = new Fuse(arr, { keys: ["title"] });
+      const searchPattern = value.toString();
+      var fuseResults = fuse.search(searchPattern);
+      console.log(fuseResults);
+      tempResults[i] = fuseResults;
+    }
+
+    console.log(tempResults);
+
+    this.setState({ searchResults: tempResults });
+    this.setState({ searchValue: value });
+  };
 
   getMediaPosts = () => {
     let archivedMedia = Array.from(
@@ -78,18 +102,27 @@ class MediaArchive extends Component {
               <h2>Media Mentions Archive</h2>
             </div>
             <div className="col-lg-6">
-              <div className="arc-newsroom-search">search bar here</div>
+              <div className="arc-newsroom-search">
+                <input
+                id="newsroom-search"
+                  value={this.state.searchValue}
+                  onChange={this.setSearchValue.bind(this)}
+                />
+                <i className="fas fa-search"></i>
+              </div>
             </div>
           </div>
         </div>
         <div>
           <div className="media-archive-container media-archive-posts">
-            {this.state.mediaArray.map((postYear, i) => {
+            {(this.state.searchValue.length > 0 ? this.state.searchResults : this.state.mediaArray).map((postYear, i) => {
+              
               // if the show more button hasn't been push
                 if (!this.state.expanded) {
                   // Use the index of the postYear to paginate only the most recent year
                   if (i < 1) {
                     return postYear.map((post) => {
+                      var post = this.state.searchValue.length > 0 ? post.item : post;
                       return (
                         <div className="row">
                           <div className="col-lg-12">

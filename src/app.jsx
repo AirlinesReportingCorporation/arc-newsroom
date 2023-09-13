@@ -149,7 +149,12 @@ class Newsroom extends Component {
             <div className="col-lg-6">
               <div className="arc-newsroom-search">
                 <form action="/archive.html">
-                  <input placeholder="Search" type="text" name="q" id="newsroom-search" />
+                  <input
+                    placeholder="Search"
+                    type="text"
+                    name="q"
+                    id="newsroom-search"
+                  />
                   <i class="fas fa-search"></i>
                 </form>
               </div>

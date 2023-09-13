@@ -1,9 +1,14 @@
 @use "~arccorp-vars/src/scss/main";
+@use "partials/newsroom-search";
 
 #app {
   justify-content: center;
   width: 100%;
 }
+
+.page-grid {
+  display: none;
+ }
 
 .media-archive-page {
   width: 100%;
@@ -69,6 +74,10 @@
   font-family: main.$arc-font-semibold;
   font-size: 28px;
   line-height: 40px;
+
+  a {
+    font-family: main.$arc-font-semibold;
+  }
 }
 
 .mention-date {
