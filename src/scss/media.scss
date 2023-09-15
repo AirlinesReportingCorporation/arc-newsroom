@@ -93,3 +93,18 @@
   display: flex;
   margin-bottom: 20px;
 }
+
+@media only screen and (max-width: 600px) {
+  .archive-header h2 {
+    text-align: center;
+    padding-bottom: 15px;
+  }
+  .arc-newsroom-search {
+    justify-content: center;
+    padding-bottom: 60px;
+  }
+
+  input#newsroom-search {
+    width: 100%
+  }
+}

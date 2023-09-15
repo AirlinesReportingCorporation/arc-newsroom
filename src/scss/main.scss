@@ -50,3 +50,58 @@
   display: flex;
   justify-content: end;
 }
+
+@media only screen and (max-width: 600px) {
+  .newsroom-jumbo {
+    padding-bottom: 60px;
+    max-height: 800px;
+    height: 100%;
+    padding-top: 30px;
+  }
+  .jumbo-info {
+    justify-content: end;
+    height: 265px;
+  }
+
+  h2 {
+    text-align: center;
+    padding-bottom: 15px;
+  }
+  .arc-newsroom-search {
+    justify-content: center;
+    form {
+      // inherit the relative position for the spyglass
+      position: inherit;
+    }
+  }
+
+  .post-outer-card {
+    height: auto;
+    margin: 15px auto;
+
+    .post-title, .post-desc {
+      max-width: 350px;
+      width: 100%;
+    }
+  }
+
+  .post-inner-bottom {
+    display: none;
+  }
+
+  h2.text-left {
+    margin-top: 30px;
+  }
+
+  .newsroom-media {
+    margin-bottom: 15px;
+  }
+
+  .newsroom-viewMore {
+    margin: 0px auto 30px;
+  }
+
+  .connect-desc, .connect-buttons {
+    margin-left: 15px;
+  }
+}
