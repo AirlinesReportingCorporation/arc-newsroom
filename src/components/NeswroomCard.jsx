@@ -14,7 +14,7 @@ export default class NewsroomCard extends Component {
         }
       >
         <a
-          href={"https://www2.arccorp.com/" + this.props.link}
+          href={"https://www2.arccorp.com" + this.props.link}
           className="post-link"
         >
           <div className="post-outer-card">

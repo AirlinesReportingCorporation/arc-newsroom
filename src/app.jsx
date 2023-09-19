@@ -137,8 +137,8 @@ class Newsroom extends Component {
         <Stickynav
           className="bg-color-tarmac"
           title="Newsroom"
-          contactUs="Subscribe to ARC News"
-          rightLink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
+          stickyCTA="Subscribe to ARC News"
+          stickyCTALink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
         ></Stickynav>
         <NewsroomJumbo />
         <div className="newsroom-container newsroom-posts-header">
@@ -148,7 +148,14 @@ class Newsroom extends Component {
             </div>
             <div className="col-lg-6">
               <div className="arc-newsroom-search">
-                <form action={location.hostname === "localhost" ? "/archive.html":  "https://www2.arccorp.com/about-us/newsroom/archive/"}>
+                <form
+                  action={
+                    location.hostname === "localhost" ||
+                    location.hostname === "netlify"
+                      ? "/archive.html"
+                      : "https://www2.arccorp.com/about-us/newsroom/archive/"
+                  }
+                >
                   <input
                     placeholder="Search"
                     type="text"
@@ -177,7 +184,11 @@ class Newsroom extends Component {
           </div>
           <div className="text-center newsroom-ctaBtn">
             <a
-              href={location.hostname === "localhost" ? "/archive.html":"https://www2.arccorp.com/about-us/newsroom/archive/"}
+              href={
+                location.hostname === "localhost" || location.hostname === "netlify"
+                  ? "/archive.html"
+                  : "https://www2.arccorp.com/about-us/newsroom/archive/"
+              }
               style={{
                 display: this.state.showViewMore ? "inline-block" : "",
                 width: "220px",
@@ -239,7 +250,11 @@ class Newsroom extends Component {
           </div>
           <div className="text-center newsroom-ctaBtn">
             <a
-              href={location.hostname === "localhost" ? "/media-archive.html":"https://www2.arccorp.com/about-us/newsroom/media-mentions/"}
+              href={
+                location.hostname === "localhost" || location.hostname === "netlify"
+                  ? "/media-archive.html"
+                  : "https://www2.arccorp.com/about-us/newsroom/media-mentions/"
+              }
               // onClick={this.showMore}
               style={{
                 width: "243px",

@@ -4,6 +4,10 @@ import { Stickynav } from "arccorp-vars";
 import Fuse from "fuse.js";
 import "./scss/media.scss";
 
+var newsroomLink =
+  location.hostname === "localhost" || location.hostname === "netlify"
+    ? "/index.html"
+    : "https://www2.arccorp.com/about-us/newsroom";
 class MediaArchive extends Component {
   constructor() {
     super();
@@ -14,7 +18,7 @@ class MediaArchive extends Component {
       mediaArray: [],
       searchValue: "",
       searchResults: [],
-      expanded : false,
+      expanded: false,
     };
   }
 
@@ -27,7 +31,7 @@ class MediaArchive extends Component {
     var tempResults = [];
     console.log(value);
     console.log(this.state.mediaArray);
-    
+
     //concat arrays
     for (let i = 0; i < this.state.mediaArray.length; i++) {
       const arr = this.state.mediaArray[i];
@@ -84,17 +88,20 @@ class MediaArchive extends Component {
   };
 
   showMore = () => {
-    this.state.expanded ? this.setState({expanded: false}) : this.setState({expanded: true})
-  }
+    this.state.expanded
+      ? this.setState({ expanded: false })
+      : this.setState({ expanded: true });
+  };
 
   render() {
     return (
       <div className="media-archive-page">
         <Stickynav
+          pageLink={newsroomLink}
           className="bg-color-tarmac"
           title="Newsroom"
-          contactUs="Subscribe to ARC News"
-          rightLink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
+          stickyCTA="Subscribe to ARC News"
+          stickyCTALink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
         ></Stickynav>
         <div className="media-archive-container archive-header">
           <div className="row">
@@ -104,7 +111,7 @@ class MediaArchive extends Component {
             <div className="col-lg-6">
               <div className="arc-newsroom-search">
                 <input
-                id="newsroom-search"
+                  id="newsroom-search"
                   value={this.state.searchValue}
                   onChange={this.setSearchValue.bind(this)}
                 />
@@ -115,38 +122,41 @@ class MediaArchive extends Component {
         </div>
         <div>
           <div className="media-archive-container media-archive-posts">
-            {(this.state.searchValue.length > 0 ? this.state.searchResults : this.state.mediaArray).map((postYear, i) => {
-              
+            {(this.state.searchValue.length > 0
+              ? this.state.searchResults
+              : this.state.mediaArray
+            ).map((postYear, i) => {
               // if the show more button hasn't been push
-                if (!this.state.expanded) {
-                  // Use the index of the postYear to paginate only the most recent year
-                  if (i < 1) {
-                    return postYear.map((post) => {
-                      var post = this.state.searchValue.length > 0 ? post.item : post;
-                      return (
-                        <div className="row">
-                          <div className="col-lg-12">
-                            <div className="mention-inner">
-                              <div className="mention-tags">
-                                MEDIA MENTIONS <span className="tags-dot">•</span>{" "}
-                                {post.text}
-                              </div>
-                              <div className="mention-title">
-                                <a href={post.link}>{post.title}</a>
-                              </div>
-                              <div className="mention-date">
-                                {post.date ? post.date : this.state.mediaYear[i]}
-                              </div>
+              if (!this.state.expanded) {
+                // Use the index of the postYear to paginate only the most recent year
+                if (i < 1) {
+                  return postYear.map((post) => {
+                    var post =
+                      this.state.searchValue.length > 0 ? post.item : post;
+                    return (
+                      <div className="row">
+                        <div className="col-lg-12">
+                          <div className="mention-inner">
+                            <div className="mention-tags">
+                              MEDIA MENTIONS <span className="tags-dot">•</span>{" "}
+                              {post.text}
+                            </div>
+                            <div className="mention-title">
+                              <a href={post.link}>{post.title}</a>
+                            </div>
+                            <div className="mention-date">
+                              {post.date ? post.date : this.state.mediaYear[i]}
                             </div>
                           </div>
                         </div>
-                      );
-                    });
-                  }
+                      </div>
+                    );
+                  });
                 }
-                // Else, when we want to view more
-                else {
-                  return postYear.map((post) => {
+              }
+              // Else, when we want to view more
+              else {
+                return postYear.map((post) => {
                   return (
                     <div className="row">
                       <div className="col-lg-12">
@@ -166,8 +176,7 @@ class MediaArchive extends Component {
                     </div>
                   );
                 });
-                }
-             
+              }
             })}
           </div>
           <div className="media-archive-container">

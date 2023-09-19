@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "arccorp-vars": "^0.2.5",
+    "arccorp-vars": "^0.2.7",
     "framer-motion": "^9.1.7",
     "fuse.js": "^6.6.2",
     "lodash": "^4.17.21",

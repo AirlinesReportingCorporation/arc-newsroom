@@ -4,9 +4,10 @@ import { Stickynav } from "arccorp-vars";
 import "./scss/media.scss";
 import Fuse from "fuse.js";
 
-const fuseOptions = {
-  keys: ["title"],
-};
+var newsroomLink =
+  location.hostname === "localhost" || location.hostname === "netlify"
+    ? "/index.html"
+    : "https://www2.arccorp.com/about-us/newsroom";
 
 const max = 10;
 // Change the pattern
@@ -20,7 +21,7 @@ class Archive extends Component {
       expanded: false,
       searchValue: "",
       searchResults: [],
-      param: true
+      param: true,
     };
   }
 
@@ -84,10 +85,11 @@ class Archive extends Component {
     return (
       <div className="media-archive-page">
         <Stickynav
+          pageLink={newsroomLink}
           className="bg-color-tarmac"
           title="Newsroom"
-          contactUs="Subscribe to ARC News"
-          rightLink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
+          stickyCTA="Subscribe to ARC News"
+          stickyCTALink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
         ></Stickynav>
         <div className="media-archive-container archive-header">
           <div className="row">
@@ -97,7 +99,7 @@ class Archive extends Component {
             <div className="col-lg-6">
               <div className="arc-newsroom-search">
                 <input
-                id="newsroom-search"
+                  id="newsroom-search"
                   value={this.state.searchValue}
                   onChange={this.setSearchValue.bind(this)}
                 />
@@ -114,9 +116,24 @@ class Archive extends Component {
             ).map((post, i) => {
               var post = this.state.searchResults.length > 0 ? post.item : post;
 
-              if(this.state.expanded) {
+              if (this.state.expanded) {
                 return (
-                
+                  <div className="row" key={i}>
+                    <div className="col-lg-12">
+                      <div className="mention-inner">
+                        <div className="mention-tags">
+                          NEWS RELEASE <span className="tags-dot">•</span>{" "}
+                        </div>
+                        <div className="mention-title">
+                          <a href={post.link}>{post.title}</a>
+                        </div>
+                        <div className="mention-date">{post.date}</div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              } else if (!this.state.expanded && i < max) {
+                return (
                   <div className="row" key={i}>
                     <div className="col-lg-12">
                       <div className="mention-inner">
@@ -132,26 +149,6 @@ class Archive extends Component {
                   </div>
                 );
               }
-              else if(!this.state.expanded && i < max) {
-                return (
-                
-                  <div className="row" key={i}>
-                    <div className="col-lg-12">
-                      <div className="mention-inner">
-                        <div className="mention-tags">
-                          NEWS RELEASE <span className="tags-dot">•</span>{" "}
-                        </div>
-                        <div className="mention-title">
-                          <a href={post.link}>{post.title}</a>
-                        </div>
-                        <div className="mention-date">{post.date}</div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-
-              
             })}
           </div>
           <div className="media-archive-container">
