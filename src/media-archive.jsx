@@ -112,6 +112,7 @@ class MediaArchive extends Component {
               <div className="arc-newsroom-search">
                 <input
                   id="newsroom-search"
+                  placeholder="Search"
                   value={this.state.searchValue}
                   onChange={this.setSearchValue.bind(this)}
                 />

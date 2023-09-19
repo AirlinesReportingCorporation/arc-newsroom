@@ -100,6 +100,7 @@ class Archive extends Component {
               <div className="arc-newsroom-search">
                 <input
                   id="newsroom-search"
+                  placeholder="Search"
                   value={this.state.searchValue}
                   onChange={this.setSearchValue.bind(this)}
                 />
@@ -122,7 +123,7 @@ class Archive extends Component {
                     <div className="col-lg-12">
                       <div className="mention-inner">
                         <div className="mention-tags">
-                          NEWS RELEASE <span className="tags-dot">•</span>{" "}
+                          NEWS RELEASE
                         </div>
                         <div className="mention-title">
                           <a href={post.link}>{post.title}</a>
@@ -138,7 +139,7 @@ class Archive extends Component {
                     <div className="col-lg-12">
                       <div className="mention-inner">
                         <div className="mention-tags">
-                          NEWS RELEASE <span className="tags-dot">•</span>{" "}
+                          NEWS RELEASE
                         </div>
                         <div className="mention-title">
                           <a href={post.link}>{post.title}</a>
