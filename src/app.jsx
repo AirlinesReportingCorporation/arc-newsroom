@@ -151,7 +151,7 @@ class Newsroom extends Component {
                 <form
                   action={
                     location.hostname === "localhost" ||
-                    location.hostname === "netlify"
+                    location.hostname.indexOf("netlify") > -1
                       ? "/archive.html"
                       : "https://www2.arccorp.com/about-us/newsroom/archive/"
                   }
@@ -185,7 +185,8 @@ class Newsroom extends Component {
           <div className="text-center newsroom-ctaBtn">
             <a
               href={
-                location.hostname === "localhost" || location.hostname === "netlify"
+                location.hostname === "localhost" ||
+                location.hostname.indexOf("netlify") > -1
                   ? "/archive.html"
                   : "https://www2.arccorp.com/about-us/newsroom/archive/"
               }
@@ -251,7 +252,8 @@ class Newsroom extends Component {
           <div className="text-center newsroom-ctaBtn">
             <a
               href={
-                location.hostname === "localhost" || location.hostname === "netlify"
+                location.hostname === "localhost" ||
+                location.hostname.indexOf("netlify") > -1
                   ? "/media-archive.html"
                   : "https://www2.arccorp.com/about-us/newsroom/media-mentions/"
               }
