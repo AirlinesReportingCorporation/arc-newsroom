@@ -73,6 +73,7 @@ class MediaArchive extends Component {
         }
       }
       if (combined[i].localName == "p") {
+        console.log(combined[i].querySelector(".media-date").innerText)
         tempMedia.push({
           link: combined[i].querySelector("a").getAttribute("href"),
           title: combined[i].querySelector("a").innerText,
@@ -80,6 +81,7 @@ class MediaArchive extends Component {
             combined[i].querySelector("a").innerText,
             ""
           ),
+          date: combined[i].querySelector(".media-date").innerText ? combined[i].querySelector(".media-date").innerText : ""
         });
       }
     }
@@ -170,7 +172,7 @@ class MediaArchive extends Component {
                             <a href={post.link}>{post.title}</a>
                           </div>
                           <div className="mention-date">
-                            {post.date ? post.date : this.state.mediaYear[i]}
+                            {post.date != "" ? post.date : this.state.mediaYear[i]}
                           </div>
                         </div>
                       </div>
