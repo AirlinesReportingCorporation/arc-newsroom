@@ -73,7 +73,6 @@ class MediaArchive extends Component {
         }
       }
       if (combined[i].localName == "p") {
-        console.log(combined[i].querySelector(".media-date").innerText)
         tempMedia.push({
           link: combined[i].querySelector("a").getAttribute("href"),
           title: combined[i].querySelector("a").innerText,
@@ -81,7 +80,7 @@ class MediaArchive extends Component {
             combined[i].querySelector("a").innerText,
             ""
           ),
-          date: combined[i].querySelector(".media-date").innerText ? combined[i].querySelector(".media-date").innerText : ""
+          date: combined[i].querySelector(".media-date") ? combined[i].querySelector(".media-date").innerText : ""
         });
       }
     }
