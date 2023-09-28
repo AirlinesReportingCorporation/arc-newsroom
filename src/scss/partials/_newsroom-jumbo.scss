@@ -5,10 +5,12 @@
 }
 
 .newsroom-jumbo {
-  padding-bottom: 130px;
+  background: main.$fog;
+  padding-bottom: 75px;
   max-height: 800px;
   height: 100%;
-  padding-top: 60px;
+  padding-top: 53px;
+  margin-bottom: 45px;
 }
 
 .jumbo-row {
@@ -31,7 +33,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 595px;
+  height: 425px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .jumbo-metadata {
@@ -48,7 +52,7 @@
   padding-top: 20px;
   font-family: main.$arc-font-regular;
   max-width: 530px;
-  padding-bottom: 60px;
+  padding-bottom: 0;
   padding-left: 15px;
   font-size: 18px;
   letter-spacing: 0;
@@ -82,4 +86,4 @@
   a:hover {
     color: inherit;
   }
-} 
+}

@@ -141,6 +141,7 @@ class Newsroom extends Component {
           stickyCTALink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
         ></Stickynav>
         <NewsroomJumbo />
+        <div>
         <div className="newsroom-container newsroom-posts-header">
           <div className="row">
             <div className="col-lg-6">
@@ -268,6 +269,7 @@ class Newsroom extends Component {
           </div>
         </div>
         <NewsroomConnect />
+        </div>
       </div>
     );
   }
