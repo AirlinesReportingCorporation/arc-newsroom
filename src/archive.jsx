@@ -50,14 +50,18 @@ class Archive extends Component {
     for (let i = 0; i < archivedNews.length; i++) {
       const element = archivedNews[i];
 
+      var datemeta = element.querySelectorAll(
+        ".content-block--pageItem__metadata li"
+      );
+      var dateSplit = datemeta[datemeta.length - 1].innerText;
+
       tempNews.push({
         value: element.querySelector("a").innerText,
         name: element.querySelector("a").innerText,
         key: i,
         link: element.querySelector("a").getAttribute("href"),
         title: element.querySelector("a").innerText,
-        date: element.querySelector(".content-block--pageItem__metadata")
-          .innerText,
+        date: dateSplit
       });
     }
 
@@ -122,9 +126,7 @@ class Archive extends Component {
                   <div className="row" key={i}>
                     <div className="col-lg-12">
                       <div className="mention-inner">
-                        <div className="mention-tags">
-                          NEWS RELEASE
-                        </div>
+                        <div className="mention-tags">NEWS RELEASE</div>
                         <div className="mention-title">
                           <a href={post.link}>{post.title}</a>
                         </div>
@@ -138,9 +140,7 @@ class Archive extends Component {
                   <div className="row" key={i}>
                     <div className="col-lg-12">
                       <div className="mention-inner">
-                        <div className="mention-tags">
-                          NEWS RELEASE
-                        </div>
+                        <div className="mention-tags">NEWS RELEASE</div>
                         <div className="mention-title">
                           <a href={post.link}>{post.title}</a>
                         </div>
