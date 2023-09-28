@@ -73,13 +73,14 @@ class MediaArchive extends Component {
         }
       }
       if (combined[i].localName == "p") {
+        console.log(combined[i].innerText.replace(
+          combined[i].querySelector("a"),
+          ""
+        ))
         tempMedia.push({
           link: combined[i].querySelector("a").getAttribute("href"),
-          title: combined[i].querySelector("a").innerText,
-          text: combined[i].innerText.replace(
-            combined[i].querySelector("a").innerText,
-            ""
-          ),
+          title: combined[i].querySelector("a").innerText.replace(combined[i].querySelector("span.source-name").innerText, ""),
+          text: combined[i].querySelector("span.source-name").innerText,
           date: combined[i].querySelector(".media-date") ? combined[i].querySelector(".media-date").innerText : ""
         });
       }
