@@ -136,139 +136,146 @@ class Newsroom extends Component {
       <div className="arc-newsroom-page">
         <Stickynav
           className="bg-color-tarmac"
+          links={[
+            { title: "News Releases", url: "#newsreleases" },
+            { title: "Recent Media Coverage", url: "#mediamentions" },
+          ]}
           title="Newsroom"
           stickyCTA="Subscribe to ARC News"
           stickyCTALink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
         ></Stickynav>
         <NewsroomJumbo />
         <div>
-        <div className="newsroom-container newsroom-posts-header">
-          <div className="row">
-            <div className="col-lg-6">
-              <h2>News Releases</h2>
-            </div>
-            <div className="col-lg-6">
-              <div className="arc-newsroom-search">
-                <form
-                  action={
-                    location.hostname === "localhost" ||
-                    location.hostname.indexOf("netlify") > -1
-                      ? "/archive.html"
-                      : "https://www2.arccorp.com/about-us/newsroom/archive/"
-                  }
-                >
-                  <input
-                    placeholder="Search"
-                    type="text"
-                    name="q"
-                    id="newsroom-search"
-                  />
-                  <i class="fas fa-search"></i>
-                </form>
+          <div
+            id="newsreleases"
+            className="newsroom-container newsroom-posts-header"
+          >
+            <div className="row">
+              <div className="col-lg-6">
+                <h2>News Releases</h2>
+              </div>
+              <div className="col-lg-6">
+                <div className="arc-newsroom-search">
+                  <form
+                    action={
+                      location.hostname === "localhost" ||
+                      location.hostname.indexOf("netlify") > -1
+                        ? "/archive.html"
+                        : "https://www2.arccorp.com/about-us/newsroom/archive/"
+                    }
+                  >
+                    <input
+                      placeholder="Search"
+                      type="text"
+                      name="q"
+                      id="newsroom-search"
+                    />
+                    <i class="fas fa-search"></i>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="newsroom-posts">
-          <div className="newsroom-container">
+          <div className="newsroom-posts">
+            <div className="newsroom-container">
+              <div className="row">
+                {this.state.posts.map((post, i) => (
+                  <NewsroomCard
+                    key={i}
+                    date={post.date}
+                    title={post.title}
+                    desc={post.text}
+                    link={post.link}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="text-center newsroom-ctaBtn">
+              <a
+                href={
+                  location.hostname === "localhost" ||
+                  location.hostname.indexOf("netlify") > -1
+                    ? "/archive.html"
+                    : "https://www2.arccorp.com/about-us/newsroom/archive/"
+                }
+                style={{
+                  display: this.state.showViewMore ? "inline-block" : "",
+                  width: "220px",
+                }}
+                className="ctaBtn newsroom-viewMore"
+              >
+                News Release Archive
+              </a>
+            </div>
+          </div>
+          <div id="mediamentions" className="newsroom-container newsroom-posts-header">
             <div className="row">
-              {this.state.posts.map((post, i) => (
-                <NewsroomCard
-                  key={i}
-                  date={post.date}
-                  title={post.title}
-                  desc={post.text}
-                  link={post.link}
-                />
-              ))}
+              <div className="col-lg-12">
+                <h2 className="text-left">Recent Media Coverage</h2>
+              </div>
             </div>
-          </div>
-          <div className="text-center newsroom-ctaBtn">
-            <a
-              href={
-                location.hostname === "localhost" ||
-                location.hostname.indexOf("netlify") > -1
-                  ? "/archive.html"
-                  : "https://www2.arccorp.com/about-us/newsroom/archive/"
-              }
-              style={{
-                display: this.state.showViewMore ? "inline-block" : "",
-                width: "220px",
-              }}
-              className="ctaBtn newsroom-viewMore"
-            >
-              News Release Archive
-            </a>
-          </div>
-        </div>
-        <div className="newsroom-container newsroom-posts-header">
-          <div className="row">
-            <div className="col-lg-12">
-              <h2 className="text-left">Recent Media Coverage</h2>
-            </div>
-          </div>
-          <div className="newsroom-media">
-            <div className="row">
-              {recentMedia.splice(0, 1).map((post, i) => (
-                <div className="col-lg-12" key={i}>
-                  <a href={post.link}>
-                    <div
-                      className="card-background"
-                      style={{
-                        background:
-                          "url(" + post.image + ") center center no-repeat",
-                        backgroundSize: "cover",
-                      }}
-                    >
-                      <div className="recent-inner">
-                        <div className="recent-title">{post.title}</div>
-                        <div className="recent-company">{post.text}</div>
+            <div className="newsroom-media">
+              <div className="row">
+                {recentMedia.splice(0, 1).map((post, i) => (
+                  <div className="col-lg-12" key={i}>
+                    <a href={post.link}>
+                      <div
+                        className="card-background"
+                        style={{
+                          background:
+                            "url(" + post.image + ") center center no-repeat",
+                          backgroundSize: "cover",
+                        }}
+                      >
+                        <div className="recent-inner">
+                          <div className="recent-title">{post.title}</div>
+                          <div className="recent-company">{post.text}</div>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </div>
-              ))}
-              {recentMedia.splice(0, 2).map((post, i) => (
-                <div className="col-lg-6" key={i}>
-                  <a href={post.link}>
-                    <div
-                      className="card-background"
-                      style={{
-                        background:
-                          "url(" + post.image + ") center center no-repeat",
-                        backgroundSize: "cover",
-                      }}
-                    >
-                      <div className="newsroom-card-overlay"></div>
-                      <div className="recent-inner">
-                        <div className="recent-title">{post.title}</div>
-                        <div className="recent-company">{post.text}</div>
+                    </a>
+                  </div>
+                ))}
+                {recentMedia.splice(0, 2).map((post, i) => (
+                  <div className="col-lg-6" key={i}>
+                    <a href={post.link}>
+                      <div
+                        className="card-background"
+                        style={{
+                          background:
+                            "url(" + post.image + ") center center no-repeat",
+                          backgroundSize: "cover",
+                        }}
+                      >
+                        <div className="newsroom-card-overlay"></div>
+                        <div className="recent-inner">
+                          <div className="recent-title">{post.title}</div>
+                          <div className="recent-company">{post.text}</div>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </div>
-              ))}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="text-center newsroom-ctaBtn">
+              <a
+                href={
+                  location.hostname === "localhost" ||
+                  location.hostname.indexOf("netlify") > -1
+                    ? "/media-archive.html"
+                    : "https://www2.arccorp.com/about-us/newsroom/media-mentions/"
+                }
+                // onClick={this.showMore}
+                style={{
+                  width: "243px",
+                }}
+                className="ctaBtn newsroom-viewMore"
+              >
+                Media Mentions Archive
+              </a>
             </div>
           </div>
-          <div className="text-center newsroom-ctaBtn">
-            <a
-              href={
-                location.hostname === "localhost" ||
-                location.hostname.indexOf("netlify") > -1
-                  ? "/media-archive.html"
-                  : "https://www2.arccorp.com/about-us/newsroom/media-mentions/"
-              }
-              // onClick={this.showMore}
-              style={{
-                width: "243px",
-              }}
-              className="ctaBtn newsroom-viewMore"
-            >
-              Media Mentions Archive
-            </a>
-          </div>
-        </div>
-        <NewsroomConnect />
+          <NewsroomConnect />
         </div>
       </div>
     );

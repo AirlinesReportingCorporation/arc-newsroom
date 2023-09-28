@@ -73,15 +73,21 @@ class MediaArchive extends Component {
         }
       }
       if (combined[i].localName == "p") {
-        console.log(combined[i].innerText.replace(
-          combined[i].querySelector("a"),
-          ""
-        ))
+        console.log(
+          combined[i].innerText.replace(combined[i].querySelector("a"), "")
+        );
         tempMedia.push({
           link: combined[i].querySelector("a").getAttribute("href"),
-          title: combined[i].querySelector("a").innerText.replace(combined[i].querySelector("span.source-name").innerText, ""),
+          title: combined[i]
+            .querySelector("a")
+            .innerText.replace(
+              combined[i].querySelector("span.source-name").innerText,
+              ""
+            ),
           text: combined[i].querySelector("span.source-name").innerText,
-          date: combined[i].querySelector(".media-date") ? combined[i].querySelector(".media-date").innerText : ""
+          date: combined[i].querySelector(".media-date")
+            ? combined[i].querySelector(".media-date").innerText
+            : "",
         });
       }
     }
@@ -102,6 +108,13 @@ class MediaArchive extends Component {
           pageLink={newsroomLink}
           className="bg-color-tarmac"
           title="Newsroom"
+          links={[
+            { title: "News Releases", url: newsroomLink + "#newsreleases" },
+            {
+              title: "Recent Media Coverage",
+              url: newsroomLink + "#mediamentions",
+            },
+          ]}
           stickyCTA="Subscribe to ARC News"
           stickyCTALink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
         ></Stickynav>
@@ -172,7 +185,9 @@ class MediaArchive extends Component {
                             <a href={post.link}>{post.title}</a>
                           </div>
                           <div className="mention-date">
-                            {post.date != "" ? post.date : this.state.mediaYear[i]}
+                            {post.date != ""
+                              ? post.date
+                              : this.state.mediaYear[i]}
                           </div>
                         </div>
                       </div>

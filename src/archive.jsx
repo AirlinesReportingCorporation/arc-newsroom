@@ -91,6 +91,10 @@ class Archive extends Component {
         <Stickynav
           pageLink={newsroomLink}
           className="bg-color-tarmac"
+          links={[
+            { title: "News Releases", url: newsroomLink + "#newsreleases" },
+            { title: "Recent Media Coverage", url: newsroomLink + "#mediamentions" },
+          ]}
           title="Newsroom"
           stickyCTA="Subscribe to ARC News"
           stickyCTALink="https://www2.arccorp.com/about-us/newsroom/subscribe/"
