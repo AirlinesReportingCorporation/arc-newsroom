@@ -154,7 +154,6 @@ class MediaArchive extends Component {
                         <div className="col-lg-12">
                           <div className="mention-inner">
                             <div className="mention-tags">
-                              MEDIA MENTIONS <span className="tags-dot">•</span>{" "}
                               {post.text}
                             </div>
                             <div className="mention-title">
