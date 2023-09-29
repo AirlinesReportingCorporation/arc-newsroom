@@ -26,7 +26,7 @@ class NewsroomJumbo extends Component {
                   className="jumbo-left"
                   style={{
                     backgroundImage:
-                      "url(https://www2.arccorp.com/globalassets/homepage//redesign/newsroom/girl-with-laptop.png",
+                      "url(https://www2.arccorp.com/globalassets/homepage//redesign/newsroom/newsroom-jumbo.png",
                   }}
                 >
                   <div className="newsroom-jumbo-image"></div>
