@@ -9,11 +9,11 @@ class NewsroomJumbo extends Component {
     var jumboPost = [
       {
         icon: "arc-is-ndc-ready",
-        date: "AUG 17, 2023",
+        date: "SEP 21, 2023",
         timeread: "1 min read",
-        title: "July U.S. Travel Agency Air Ticket Sales Increase 11% Year Over Year",
-        text: "Month-over-Month Growth in U.S. Domestic Passenger Trips Outpaced International in July",
-        link: "/about-us/newsroom/2023-news-releases/july-2023-ticket-sales/",
+        title: "August U.S. Travel Agency Air Ticket Sales Surpass $8 Billion",
+        text: "Total Passenger Trips Rebounded in August as Average Ticket Price Declined for Third Consecutive Month",
+        link: "/about-us/newsroom/2023-news-releases/august-2023-ticket-sales/",
       },
     ];
     return (
