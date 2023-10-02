@@ -9,11 +9,11 @@ class NewsroomJumbo extends Component {
     var jumboPost = [
       {
         icon: "arc-is-ndc-ready",
-        date: "NOV 23, 2022",
+        date: "AUG 17, 2023",
         timeread: "1 min read",
-        title: "ARC Implements NDC with Finnair",
-        text: "Finnair is the 24th Participating Airline in ARC Direct Connect",
-        link: "/about-us/newsroom/2023-news-releases/arc-ndc-with-finnair/",
+        title: "July U.S. Travel Agency Air Ticket Sales Increase 11% Year Over Year",
+        text: "Month-over-Month Growth in U.S. Domestic Passenger Trips Outpaced International in July",
+        link: "/about-us/newsroom/2023-news-releases/july-2023-ticket-sales/",
       },
     ];
     return (
@@ -39,8 +39,7 @@ class NewsroomJumbo extends Component {
               {jumboPost.map((jumbo, i) => (
                 <div className="jumbo-info bg-color-tarmac" key={i}>
                   <div className="jumbo-metadata">
-                    <span>{jumbo.date + " "}</span>•
-                    <span>{" " + jumbo.timeread}</span>
+                    <span>{jumbo.date + " "}</span>
                   </div>
                   <div
                     className="newsroom-jumbo-title"
