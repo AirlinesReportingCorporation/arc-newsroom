@@ -43,15 +43,19 @@ class Newsroom extends Component {
       var tempPosts = this.state.posts;
       var tempSearchPosts = this.state.searchPosts;
 
-      let date = post.querySelector(".content-block--pageItem__metadata")
-        .lastElementChild.innerHTML;
+      if (post.querySelector(".ctaLink")) {
+        let date = post.querySelector(".content-block--pageItem__metadata")
+          .lastElementChild.innerHTML;
 
-      tempPosts.push({
-        link: post.querySelector(".ctaLink").getAttribute("href"),
-        title: post.querySelector(".ctaLink").innerText,
-        date: moment(date).format("MMM DD, YYYY"),
-        text: post.querySelector(".content-block--pageItem__body").innerText,
-      });
+        tempPosts.push({
+          link: post.querySelector(".ctaLink")
+            ? post.querySelector(".ctaLink").getAttribute("href")
+            : "#",
+          title: post.querySelector(".ctaLink").innerText,
+          date: moment(date).format("MMM DD, YYYY"),
+          text: post.querySelector(".content-block--pageItem__body").innerText,
+        });
+      }
 
       i++;
       if (tempPosts.length == endIndex) {
@@ -93,15 +97,20 @@ class Newsroom extends Component {
       const post = tempArray[i];
 
       var tempMediaPosts = this.state.mediaPosts;
-      tempMediaPosts.push({
-        link: post.querySelector("a").getAttribute("href"),
-        title: post.querySelector("a").innerText,
-        text: post.innerText.replace(post.querySelector("a").innerText, ""),
-        image:
-          "https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom" +
-          ((post.querySelector("a").innerText.length % 7) + 1) +
-          ".jpg",
-      });
+      if (post.querySelector("a")) {
+        tempMediaPosts.push({
+          link: post.querySelector("a")
+            ? post.querySelector("a").getAttribute("href")
+            : "",
+          title: post.querySelector("a").innerText,
+          text: post.innerText.replace(post.querySelector("a").innerText, ""),
+          image:
+            "https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom" +
+            ((post.querySelector("a").innerText.length % 7) + 1) +
+            ".jpg",
+        });
+      }
+
       i++;
       if (tempMediaPosts.length == 8) {
         break;
@@ -208,7 +217,10 @@ class Newsroom extends Component {
               </a>
             </div>
           </div>
-          <div id="mediamentions" className="newsroom-container newsroom-posts-header">
+          <div
+            id="mediamentions"
+            className="newsroom-container newsroom-posts-header"
+          >
             <div className="row">
               <div className="col-lg-12">
                 <h2 className="text-left">Recent Media Coverage</h2>
