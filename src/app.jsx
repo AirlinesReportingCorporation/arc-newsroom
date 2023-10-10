@@ -43,19 +43,17 @@ class Newsroom extends Component {
       var tempPosts = this.state.posts;
       var tempSearchPosts = this.state.searchPosts;
 
-      if (post.querySelector(".ctaLink")) {
-        let date = post.querySelector(".content-block--pageItem__metadata")
-          .lastElementChild.innerHTML;
+      let date = post.querySelector(".content-block--pageItem__metadata")
+        .lastElementChild.innerHTML;
 
-        tempPosts.push({
-          link: post.querySelector(".ctaLink")
-            ? post.querySelector(".ctaLink").getAttribute("href")
-            : "#",
-          title: post.querySelector(".ctaLink").innerText,
-          date: moment(date).format("MMM DD, YYYY"),
-          text: post.querySelector(".content-block--pageItem__body").innerText,
-        });
-      }
+      tempPosts.push({
+        link: post.querySelector(".ctaLink")
+          ? post.querySelector(".ctaLink").getAttribute("href")
+          : "#",
+        title: post.querySelector(".ctaLink").innerText,
+        date: moment(date).format("MMM DD, YYYY"),
+        text: post.querySelector(".content-block--pageItem__body").innerText,
+      });
 
       i++;
       if (tempPosts.length == endIndex) {
@@ -97,20 +95,25 @@ class Newsroom extends Component {
       const post = tempArray[i];
 
       var tempMediaPosts = this.state.mediaPosts;
-      if (post.querySelector("a")) {
-        tempMediaPosts.push({
-          link: post.querySelector("a")
-            ? post.querySelector("a").getAttribute("href")
-            : "",
-          title: post.querySelector("a").innerText,
-          text: post.innerText.replace(post.querySelector("a").innerText, ""),
-          image:
-            "https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom" +
-            ((post.querySelector("a").innerText.length % 7) + 1) +
-            ".jpg",
-        });
+      let mediaMentionsLink = post.querySelector("a");
+      if (mediaMentionsLink) {
+        if (
+          mediaMentionsLink.getAttribute("href") &&
+          mediaMentionsLink.innerText
+        ) {
+          tempMediaPosts.push({
+            link: post.querySelector("a").getAttribute("href"),
+            title: post.querySelector("a").innerText,
+            text: post.innerText.replace(post.querySelector("a").innerText, ""),
+            image:
+              "https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom" +
+              ((post.querySelector("a").innerText.length % 7) + 1) +
+              ".jpg",
+          });
+        }
+      } else {
+        console.log("Error with media mentions post");
       }
-
       i++;
       if (tempMediaPosts.length == 8) {
         break;
