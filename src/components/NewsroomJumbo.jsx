@@ -8,12 +8,10 @@ class NewsroomJumbo extends Component {
   render() {
     var jumboPost = [
       {
-        icon: "arc-is-ndc-ready",
-        date: "SEP 21, 2023",
-        timeread: "1 min read",
-        title: "August U.S. Travel Agency Air Ticket Sales Surpass $8 Billion",
-        text: "Total Passenger Trips Rebounded in August as Average Ticket Price Declined for Third Consecutive Month",
-        link: "/about-us/newsroom/2023-news-releases/august-2023-ticket-sales/",
+        date: "OCT 18, 2023",
+        title: "September U.S. Travel Agency Air Ticket Sales Total $7.6 Billion",
+        text: "Month-over-Month Sales and Passenger Trips Declined as Summer Air Travel Wound Down",
+        link: "/about-us/newsroom/2023-news-releases/september-u.s.-travel-agency-air-ticket-sales-total-$7.6-billion/",
       },
     ];
     return (
@@ -26,7 +24,7 @@ class NewsroomJumbo extends Component {
                   className="jumbo-left"
                   style={{
                     backgroundImage:
-                      "url(https://www2.arccorp.com/globalassets/homepage//redesign/newsroom/newsroom-jumbo.png",
+                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom1.jpg",
                   }}
                 >
                   <div className="newsroom-jumbo-image"></div>
