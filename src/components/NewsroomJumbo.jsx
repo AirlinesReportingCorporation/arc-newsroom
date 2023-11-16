@@ -8,10 +8,10 @@ class NewsroomJumbo extends Component {
   render() {
     var jumboPost = [
       {
-        date: "NOV 13, 2023",
-        title: "ARC and LOT Polish Airlines Partner Through ARC Direct Connect",
-        text: "Airlines Reporting Corp. (ARC) is pleased to announce the completion of LOT Polish Airlines’ New Distribution Capability (NDC) integration with ARC Direct Connect.",
-        link: "/about-us/newsroom/2023-news-releases/arc-and-lot-polish-airlines-partner-through-arc-direct-connect/",
+        date: "NOV 16, 2023",
+        title: "U.S. Travel Agency Air Ticket Sales Top $7.2 Billion in October",
+        text: "Airlines Reporting Corp. (ARC) has released data showing total U.S. travel agency air ticket sales reached $7.2 billion in October — a 2% decrease from October 2022.",
+        link: "/about-us/newsroom/2023-news-releases/october-2023-ticket-sales/",
       },
     ];
     return (
