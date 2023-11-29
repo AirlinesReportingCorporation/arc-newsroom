@@ -8,10 +8,10 @@ class NewsroomJumbo extends Component {
   render() {
     var jumboPost = [
       {
-        date: "OCT 18, 2023",
-        title: "September U.S. Travel Agency Air Ticket Sales Total $7.6 Billion",
-        text: "Month-over-Month Sales and Passenger Trips Declined as Summer Air Travel Wound Down",
-        link: "/about-us/newsroom/2023-news-releases/september-u.s.-travel-agency-air-ticket-sales-total-$7.6-billion/",
+        date: "NOV 28, 2023",
+        title: "ARC and IATA Extend Direct Data Solutions Partnership",
+        text: "Airlines Reporting Corporation (ARC) and the International Air Transport Association (IATA) have extended their Direct Data Solutions (DDS) partnership, which offers subscribing airlines the most comprehensive global set of airline sales, market and itinerary data.",
+        link: "/about-us/newsroom/2023-news-releases/arc-iata-extend-DDS-partnership",
       },
     ];
     return (
@@ -24,7 +24,7 @@ class NewsroomJumbo extends Component {
                   className="jumbo-left"
                   style={{
                     backgroundImage:
-                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom1.jpg",
+                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom3.jpg",
                   }}
                 >
                   <div className="newsroom-jumbo-image"></div>
