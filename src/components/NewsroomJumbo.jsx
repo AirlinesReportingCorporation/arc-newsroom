@@ -8,10 +8,10 @@ class NewsroomJumbo extends Component {
   render() {
     var jumboPost = [
       {
-        date: "NOV 28, 2023",
-        title: "ARC and IATA Extend Direct Data Solutions Partnership",
-        text: "Airlines Reporting Corporation (ARC) and the International Air Transport Association (IATA) have extended their Direct Data Solutions (DDS) partnership, which offers subscribing airlines the most comprehensive global set of airline sales, market and itinerary data.",
-        link: "/about-us/newsroom/2023-news-releases/arc-iata-extend-DDS-partnership",
+        date: "Dec 8, 2023",
+        title: "ARC Earns Top Score in Human Rights Campaign Foundation’s 2023-2024 Corporate Equality Index",
+        text: "Airlines Reporting Corporation (ARC) is proud to announce it received a score of 100 on the Human Rights Campaign Foundation’s 2023-2024 Corporate Equality Index (CEI).",
+        link: "/about-us/newsroom/2023-news-releases/arc-earns-top-score-in-HRC-CEI/",
       },
     ];
     return (
@@ -24,7 +24,7 @@ class NewsroomJumbo extends Component {
                   className="jumbo-left"
                   style={{
                     backgroundImage:
-                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom3.jpg",
+                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom5.jpg",
                   }}
                 >
                   <div className="newsroom-jumbo-image"></div>
