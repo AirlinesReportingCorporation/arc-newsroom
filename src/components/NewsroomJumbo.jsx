@@ -8,10 +8,10 @@ class NewsroomJumbo extends Component {
   render() {
     var jumboPost = [
       {
-        date: "Dec 8, 2023",
-        title: "ARC Earns Top Score in Human Rights Campaign Foundation’s 2023-2024 Corporate Equality Index",
-        text: "Airlines Reporting Corporation (ARC) is proud to announce it received a score of 100 on the Human Rights Campaign Foundation’s 2023-2024 Corporate Equality Index (CEI).",
-        link: "/about-us/newsroom/2023-news-releases/arc-earns-top-score-in-HRC-CEI/",
+        date: "Dec 18, 2023",
+        title: "November U.S. Travel Agency Air Ticket Sales Total $6.8 Billion",
+        text: "Today, Airlines Reporting Corp. (ARC) released data showing U.S. travel agency air ticket sales totaled $6.8 billion in November — a 3.4% increase from November 2022.",
+        link: "/about-us/newsroom/2023-news-releases/november-2023-ticket-sales/",
       },
     ];
     return (
@@ -24,7 +24,7 @@ class NewsroomJumbo extends Component {
                   className="jumbo-left"
                   style={{
                     backgroundImage:
-                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom5.jpg",
+                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom1.jpg",
                   }}
                 >
                   <div className="newsroom-jumbo-image"></div>
