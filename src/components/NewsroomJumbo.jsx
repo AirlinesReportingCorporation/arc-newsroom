@@ -8,10 +8,10 @@ class NewsroomJumbo extends Component {
   render() {
     var jumboPost = [
       {
-        date: "Jan 31, 2024",
-        title: "Kenya Airways Enhances Customer Experience through Strategic Integration with ARC Direct Connect",
-        text: "ARC’s NDC Solution Enables a More Comprehensive Booking Experience",
-        link: "/about-us/newsroom/2024-news-releases/kenya-airways-enhances-customer-experience-through-strategic-integration-with-arc-direct-connect/",
+        date: "Feb 14, 2024",
+        title: "Monthly U.S. Travel Agency Air Ticket Sales Set January Record",
+        text: "Total Agency Sales Topped $8.9 Billion on Strong Domestic and International Demand",
+        link: "/about-us/newsroom/2024-news-releases/january-2024-ticket-sales",
       },
     ];
     return (
