@@ -94,6 +94,8 @@ class Newsroom extends Component {
     while (i < 8) {
       const post = tempArray[i];
 
+      console.log(post.querySelector(".source-name").innerText)
+
       var tempMediaPosts = this.state.mediaPosts;
       let mediaMentionsLink = post.querySelector("a");
       if (mediaMentionsLink) {
@@ -104,7 +106,7 @@ class Newsroom extends Component {
           tempMediaPosts.push({
             link: post.querySelector("a").getAttribute("href"),
             title: post.querySelector("a").innerText,
-            text: post.innerText.replace(post.querySelector("a").innerText, ""),
+            text: post.querySelector(".source-name").innerText,
             image:
               "https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom" +
               ((post.querySelector("a").innerText.length % 7) + 1) +
