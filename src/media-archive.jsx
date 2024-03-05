@@ -78,13 +78,17 @@ class MediaArchive extends Component {
         );
         tempMedia.push({
           link: combined[i].querySelector("a").getAttribute("href"),
-          title: combined[i]
-            .querySelector("a")
-            .innerText.replace(
-              combined[i].querySelector("span.source-name").innerText,
-              ""
-            ),
-          text: combined[i].querySelector("span.source-name").innerText,
+          title: combined[i].querySelector("span.source-name")
+            ? combined[i]
+                .querySelector("a")
+                .innerText.replace(
+                  combined[i].querySelector("span.source-name").innerText,
+                  ""
+                )
+            : combined[i].querySelector("a").innerText,
+          text: combined[i].querySelector("span.source-name")
+            ? combined[i].querySelector("span.source-name").innerText
+            : "",
           date: combined[i].querySelector(".media-date")
             ? combined[i].querySelector(".media-date").innerText
             : "",
@@ -153,9 +157,7 @@ class MediaArchive extends Component {
                       <div className="row">
                         <div className="col-lg-12">
                           <div className="mention-inner">
-                            <div className="mention-tags">
-                              {post.text}
-                            </div>
+                            <div className="mention-tags">{post.text}</div>
                             <div className="mention-title">
                               <a href={post.link}>{post.title}</a>
                             </div>
