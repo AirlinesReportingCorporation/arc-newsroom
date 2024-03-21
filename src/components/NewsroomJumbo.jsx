@@ -8,10 +8,10 @@ class NewsroomJumbo extends Component {
   render() {
     var jumboPost = [
       {
-        date: "Feb 20, 2024",
-        title: "ARC and TAP Air Portugal Implement NDC with ARC Direct Connect",
-        text: "Solution Supports TAP Air Portugal’s Global Distribution Strategy",
-        link: "/about-us/newsroom/2024-news-releases/arc-and-tap-air-portugal-implement-ndc-with-arc-direct-connect",
+        date: "Mar 20, 2024",
+        title: "U.S. Travel Agencies Air Ticket Sales Reach $8.9 Billion in February 2024",
+        text: "Strong Domestic Travel Demand Elevated Sales to Another Record Month",
+        link: "/about-us/newsroom/2024-news-releases/u.s.-travel-agencies-air-ticket-sales-reach-$8.9-billion-in-february-2024",
       },
     ];
     return (
@@ -24,7 +24,7 @@ class NewsroomJumbo extends Component {
                   className="jumbo-left"
                   style={{
                     backgroundImage:
-                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom4.jpg",
+                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom2.jpg",
                   }}
                 >
                   <div className="newsroom-jumbo-image"></div>
