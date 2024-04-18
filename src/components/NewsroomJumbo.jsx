@@ -8,10 +8,10 @@ class NewsroomJumbo extends Component {
   render() {
     var jumboPost = [
       {
-        date: "Mar 20, 2024",
-        title: "U.S. Travel Agencies Air Ticket Sales Reach $8.9 Billion in February 2024",
-        text: "Strong Domestic Travel Demand Elevated Sales to Another Record Month",
-        link: "/about-us/newsroom/2024-news-releases/u.s.-travel-agencies-air-ticket-sales-reach-$8.9-billion-in-february-2024",
+        date: "Apr 18, 2024",
+        title: "March U.S. Travel Agencies Air Ticket Sales Top $9 Billion",
+        text: "First Quarter Total Sales and Passengers Trips Increased Year Over Year",
+        link: "/about-us/newsroom/2024-news-releases/march-u.s.-travel-agencies-air-ticket-sales-top-$9-billion/",
       },
     ];
     return (
@@ -24,7 +24,7 @@ class NewsroomJumbo extends Component {
                   className="jumbo-left"
                   style={{
                     backgroundImage:
-                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom2.jpg",
+                      "url(https://www2.arccorp.com/globalassets/homepage/redesign/newsroom/newsroom4.jpg",
                   }}
                 >
                   <div className="newsroom-jumbo-image"></div>
