@@ -72,27 +72,43 @@ class MediaArchive extends Component {
           tempMedia = [];
         }
       }
-      if (combined[i].localName == "p") {
-        console.log(
-          combined[i].innerText.replace(combined[i].querySelector("a"), "")
-        );
-        tempMedia.push({
-          link: combined[i].querySelector("a").getAttribute("href"),
-          title: combined[i].querySelector("span.source-name")
+      // Check if the item is a p tag
+      else if (combined[i].localName == "p") {
+        let mediaMention = combined[i].querySelector("a");
+
+        // Check if a tag exists
+        if (mediaMention) {
+          // If so, set the link, title, and source
+          let mediaMentionLink = mediaMention.getAttribute("href");
+          let mediaMentionTitle = combined[i].querySelector("span.source-name")
             ? combined[i]
                 .querySelector("a")
                 .innerText.replace(
                   combined[i].querySelector("span.source-name").innerText,
                   ""
                 )
-            : combined[i].querySelector("a").innerText,
-          text: combined[i].querySelector("span.source-name")
+            : combined[i].querySelector("a").innerText;
+
+          let mediaMentionSource = combined[i].querySelector("span.source-name")
             ? combined[i].querySelector("span.source-name").innerText
-            : "",
-          date: combined[i].querySelector(".media-date")
-            ? combined[i].querySelector(".media-date").innerText
-            : "",
-        });
+            : "";
+
+            // Check if Link, Title and Source exist
+          if (mediaMentionLink && mediaMentionTitle && mediaMentionSource) {
+
+            // If so, push it
+            tempMedia.push({
+              link: mediaMentionLink,
+              title: mediaMentionTitle,
+              text: mediaMentionSource,
+              date: combined[i].querySelector(".media-date")
+                ? combined[i].querySelector(".media-date").innerText
+                : "",
+            });
+          }
+        }
+      } else {
+        console.log("Error with media mentions post");
       }
     }
     tempMediaArray.push(tempMedia);

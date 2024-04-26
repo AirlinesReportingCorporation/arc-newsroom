@@ -29,7 +29,6 @@ class Newsroom extends Component {
   }
 
   setSearchValue = (val) => {
-    console.log(val);
     this.setState({ searchValue: val });
   };
 
@@ -71,15 +70,12 @@ class Newsroom extends Component {
           post.querySelector(".content-block--pageItem__body").innerText,
       });
     }
-    console.log(tempSearchPosts);
 
     // check if done looping full post array, set condition
     if (i == postArray.length) {
       // this.setState({ showViewMore: false });
-      console.log("Data full");
     } else {
       // this.setState({ showViewMore: true });
-      console.log("Data loaded");
     }
 
     this.setState({ posts: tempPosts });
@@ -87,6 +83,7 @@ class Newsroom extends Component {
   };
 
   getMediaPosts = () => {
+    // If there is a p tag, add it to the array
     let tempArray = Array.from(document.querySelectorAll(".rtf > p"));
     let mediaArray = [];
     let i = 0;
@@ -94,15 +91,24 @@ class Newsroom extends Component {
     while (i < 8) {
       const post = tempArray[i];
 
-      console.log(post.querySelector(".source-name").innerText);
-
       var tempMediaPosts = this.state.mediaPosts;
       let mediaMentionsLink = post.querySelector("a");
+
+      // Check if media mentions link exists
       if (mediaMentionsLink) {
+        // If so, grab the title and source
+
+        // replace source name for title, otherwise it will return a title in the case there isn't any
+        let mediaMentionsTitle = mediaMentionsLink.innerText.replace(post.querySelector(".source-name").innerText, "");
+        let mediaMentionSource = post.querySelector(".source-name").innerText;
+
+        // Checks to see if the href, source, and title exists
         if (
           mediaMentionsLink.getAttribute("href") &&
-          mediaMentionsLink.innerText
+          mediaMentionSource &&
+          mediaMentionsTitle
         ) {
+          // If so, push the news item
           tempMediaPosts.push({
             link: post.querySelector("a").getAttribute("href"),
             title: post
@@ -118,6 +124,7 @@ class Newsroom extends Component {
               ".jpg",
           });
         }
+        // Otherwise log an error
       } else {
         console.log("Error with media mentions post");
       }
